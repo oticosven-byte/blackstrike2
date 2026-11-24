@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08090b">
+    <meta name="description" content="BlackStrike — inventory, sales, catalog and compliance records.">
+    <title>Inventory · BlackStrike</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Cpath%20d%3D%22M20%202.5%2035.5%208v11.5c0%209.6-6.7%2015.9-15.5%2018.2C11.2%2035.4%204.5%2029.1%204.5%2019.5V8z%22%20fill%3D%22%23111216%22%20stroke%3D%22%2355575e%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M23.6%207.5%2012.4%2022.4h7.2l-3.1%2010.6%2012.3-16.1h-7.4z%22%20fill%3D%22%23ed1428%22%2F%3E%3C%2Fsvg%3E">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.3.0">
+    <script src="assets/js/app.js?v=2.3.0" defer></script>
+
+<style id="demo-mode">
+  .demo-ribbon{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:2147483000;display:flex;align-items:center;gap:10px;
+    padding:9px 16px;border-radius:999px;background:rgba(18,18,22,.94);border:1px solid rgba(229,72,77,.55);color:#f1f1f4;
+    font:500 13px/1.3 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 24px)}
+  .demo-ribbon b{color:#ff6b70;letter-spacing:.08em;font-weight:700}
+  .demo-ribbon button{background:none;border:0;color:#9a9aa5;cursor:pointer;font-size:16px;line-height:1;padding:0 0 0 4px}
+  .demo-toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%) translateY(10px);z-index:2147483001;opacity:0;
+    transition:opacity .2s,transform .2s;padding:12px 18px;border-radius:12px;background:#e5484d;color:#fff;
+    font:600 14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 12px 34px rgba(0,0,0,.45);max-width:min(560px,calc(100vw - 24px));text-align:center}
+  .demo-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media print{.demo-ribbon,.demo-toast{display:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+        <a class="brand" href="dashboard.html" aria-label="BlackStrike home">
+            <span class="logo logo-sidebar"><svg class="brand-emblem" width="44" height="44" style="width:44px;height:44px" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><defs><linearGradient id="bs-shield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22242a"/><stop offset="1" stop-color="#0a0b0d"/></linearGradient></defs><path d="M20 2.5 35.5 8v11.5c0 9.6-6.7 15.9-15.5 18.2C11.2 35.4 4.5 29.1 4.5 19.5V8z" fill="url(#bs-shield)" stroke="#4a4c53" stroke-width="1.2"/><path d="M20 5.6 32.6 10v9.5c0 7.9-5.4 13.2-12.6 15.3" fill="none" stroke="#ffffff14" stroke-width="1"/><path d="M23.6 7.5 12.4 22.4h7.2l-3.1 10.6 12.3-16.1h-7.4z" fill="#ed1428"/></svg><span class="logo-text"><span class="logo-word"><span>BLACK</span><span>STRIKE</span></span><span class="logo-caption">GUNS &amp; AMMUNITION</span></span></span>        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="dashboard.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>Dashboard</span></a><a class="nav-link active" href="inventory.html" aria-current="page"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg><span>Inventory</span><span class="nav-active-mark"></span></a><a class="nav-link" href="sales.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span>Sales</span></a><a class="nav-link" href="catalog.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg><span>Catalog by Model</span></a><a class="nav-link" href="reports.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg><span>Reports</span></a><a class="nav-link" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></a><a class="nav-link" href="about.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-9.5v.5"/></svg><span>About the Shop</span></a>                            <div class="nav-section">Administration</div>
+                <a class="nav-link" href="users.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7m2.5 8.5a6.5 6.5 0 0 0-3-5.5"/></svg><span>Users</span></a><a class="nav-link" href="models.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg><span>Gun Models</span></a><a class="nav-link" href="activity.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Activity Log</span></a>                    </nav>
+        <div class="sidebar-note">
+            <span class="sidebar-note-line"></span>
+            <p>ARMED WITH<br><strong>PRECISION.</strong></p>
+        </div>
+        <div class="sidebar-foot">
+                            <span class="sidebar-user">Shop Administrator</span><span>ADMINISTRATOR</span>
+                    </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+            <div class="crumb"><span class="crumb-dot"></span> <span class="crumb-store">BLACKSTRIKE</span> <span class="crumb-rule"></span> <span>INVENTORY</span></div>
+            <div class="topbar-right">
+                                                            <a class="topbar-action" href="sale-new.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span>New sale</span></a>
+                                        <span class="topbar-divider"></span>
+                    <div class="profile-menu">
+                        <button class="profile-button" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                            <span class="avatar">S</span>
+                        </button>
+                        <div class="profile-dropdown" role="menu">
+                            <div class="profile-summary">
+                                <strong>Shop Administrator</strong>
+                                <span>@admin · Administrator</span>
+                            </div>
+                                                        <a role="menuitem" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> My profile</a>
+                            <a role="menuitem" href="settings--tab-shop.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9h16l-1-5H5zM4 9v11h16V9M9 20v-6h6v6"/></svg> Shop settings</a>                            <form method="post" action="index.html" data-demo-go="index.html"><input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><button type="submit" role="menuitem"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l5-5-5-5m5 5H3"/></svg> Sign out</button></form>
+                        </div>
+                    </div>
+                            </div>
+        </header>
+
+        <div class="toast-region" aria-live="polite">
+                    </div>
+
+        <div class="page-content" id="content">
+        <section class="view-heading">
+        <div>
+            <div class="eyebrow">PRODUCT CATALOG</div>
+            <h1>Inventory</h1>
+            <p>Live stock levels for firearms, ammunition and accessories.</p>        </div>
+        <div class="heading-actions"><a class="btn btn-ghost" href="#demo" data-demo-msg="CSV download needs the PHP version."><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></svg> Export CSV</a><a class="btn btn-ghost" href="receive.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg> Receive stock</a><a class="btn btn-primary" href="product.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg> Add product</a></div>    </section>
+    <nav class="tabs" aria-label="Inventory views">
+    <a class="active" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg> Products</a>
+    <a class="" href="inventory--view-serials.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> Firearm serial register</a>
+</nav>
+
+<section class="summary-strip">
+    <div><span>Products</span><strong>24</strong></div>
+    <div><span>Units on hand</span><strong>716</strong></div>
+    <div><span>Stock value</span><strong>₱2,907,140.00</strong></div>
+</section>
+
+<form class="filter-bar" method="get">
+    <input type="hidden" name="page" value="inventory">
+    <label class="search-box"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search inventory</span><input name="q" type="search" value="" placeholder="Search name, SKU, caliber… (press /)" data-live-filter="#inventory-cards" autocomplete="off"></label>
+    <label class="select-wrap"><span class="sr-only">Category</span>
+        <select name="category" data-autosubmit>
+            <option value="">All categories</option>
+            <option >Firearm</option><option >Ammunition</option><option >Accessory</option>        </select>
+    </label>
+    <label class="select-wrap"><span class="sr-only">Stock status</span>
+        <select name="status" data-autosubmit>
+            <option value="">Any stock level</option>
+            <option value="ok" >In stock</option>
+            <option value="low" >Low / reorder</option>
+            <option value="out" >Out of stock</option>
+        </select>
+    </label>
+        <noscript><button class="btn btn-ghost btn-sm">Apply</button></noscript>
+    <div class="layout-toggle" role="group" aria-label="Layout">
+                <a class="active" href="inventory--layout-cards.html" aria-current="true"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Cards</span></a>
+        <a class="" href="inventory--layout-table.html" ><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></svg><span>Table</span></a>
+    </div>
+</form>
+
+<div id="inventory-cards" class="inv-groups">
+        <section class="inv-group" data-filter-group>
+        <h2 class="group-title"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg>Firearms <span>8 items · Tracked individually by serial number</span></h2>
+        <div class="inv-grid">
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="glock 17 gen5 fa-glk17 firearm 9mm luger glock glock 17 gen5 4.49 in barrel · 17+1">
+                <div class="inv-visual">
+                                            <img class="inv-photo" src="assets/images/glock-17-gen5.png" alt="Glock 17 Gen5" loading="lazy">
+                                        <span class="inv-sku mono">FA-GLK17</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Glock</span>
+                    <h3>Glock 17 Gen5</h3>
+                    <p>4.49 in barrel · 17+1</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>9mm Luger</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>11</strong> on hand</span>
+                        <span class="muted">reorder at 3</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="11 in stock, reorder level 3"><i style="width: 100%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 11 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱48,500.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Glock 17 Gen5"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Glock 17 Gen5"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="product--id-1.html" title="Edit" aria-label="Edit Glock 17 Gen5"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="glock 19 gen5 fa-glk19 firearm 9mm luger glock glock 19 gen5 4.02 in barrel · 15+1">
+                <div class="inv-visual">
+                                            <img class="inv-photo" src="assets/images/glock-19-gen5.png" alt="Glock 19 Gen5" loading="lazy">
+                                        <span class="inv-sku mono">FA-GLK19</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Glock</span>
+                    <h3>Glock 19 Gen5</h3>
+                    <p>4.02 in barrel · 15+1</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>9mm Luger</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>8</strong> on hand</span>
+                        <span class="muted">reorder at 3</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="8 in stock, reorder level 3"><i style="width: 89%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 8 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱47,500.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Glock 19 Gen5"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Glock 19 Gen5"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Glock 19 Gen5"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="remington 870 express fa-r870 firearm 12 gauge remington 870 express 18.5 in barrel">
+                <div class="inv-visual">
+                                            <img class="inv-photo" src="assets/images/remington-870-express.png" alt="Remington 870 Express" loading="lazy">
+                                        <span class="inv-sku mono">FA-R870</span>
+                    <span class="status low">Low stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Remington</span>
+                    <h3>Remington 870 Express</h3>
+                    <p>18.5 in barrel</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>12 Gauge</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>2</strong> on hand</span>
+                        <span class="muted">reorder at 2</span>
+                    </div>
+                    <div class="inv-meter low" role="img" aria-label="2 in stock, reorder level 2"><i style="width: 33%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 2 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱39,000.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive--product-8.html" title="Receive stock" aria-label="Receive stock for Remington 870 Express"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="adjust--id-8.html" title="Adjust stock" aria-label="Adjust stock for Remington 870 Express"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="product--id-8.html" title="Edit" aria-label="Edit Remington 870 Express"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="rock island m1911-a1 gi fa-ria1911 firearm .45 acp armscor rock island m1911-a1 gi 5 in barrel · 8+1">
+                <div class="inv-visual">
+                                            <img class="inv-photo" src="assets/images/rock-island-m1911-a1-gi.png" alt="Rock Island M1911-A1 GI" loading="lazy">
+                                        <span class="inv-sku mono">FA-RIA1911</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Armscor</span>
+                    <h3>Rock Island M1911-A1 GI</h3>
+                    <p>5 in barrel · 8+1</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>.45 ACP</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>6</strong> on hand</span>
+                        <span class="muted">reorder at 3</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="6 in stock, reorder level 3"><i style="width: 67%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 6 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱32,000.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Rock Island M1911-A1 GI"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Rock Island M1911-A1 GI"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Rock Island M1911-A1 GI"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="ruger 10/22 carbine fa-r1022 firearm .22 lr ruger 10/22 carbine 18.5 in barrel">
+                <div class="inv-visual">
+                                            <img class="inv-photo" src="assets/images/ruger-10-22-carbine.png" alt="Ruger 10/22 Carbine" loading="lazy">
+                                        <span class="inv-sku mono">FA-R1022</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ruger</span>
+                    <h3>Ruger 10/22 Carbine</h3>
+                    <p>18.5 in barrel</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>.22 LR</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>7</strong> on hand</span>
+                        <span class="muted">reorder at 2</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="7 in stock, reorder level 2"><i style="width: 100%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 7 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱26,500.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Ruger 10/22 Carbine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Ruger 10/22 Carbine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Ruger 10/22 Carbine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="s&amp;w m&amp;p15 sport iii fa-mp15 firearm 5.56×45mm nato smith &amp; wesson m&amp;p15 sport iii 16 in barrel">
+                <div class="inv-visual">
+                                            <img class="inv-photo" src="assets/images/sw-mp15-sport-iii.png" alt="S&amp;W M&amp;P15 Sport III" loading="lazy">
+                                        <span class="inv-sku mono">FA-MP15</span>
+                    <span class="status low">Low stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Smith &amp; Wesson</span>
+                    <h3>S&amp;W M&amp;P15 Sport III</h3>
+                    <p>16 in barrel</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>5.56×45mm NATO</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>2</strong> on hand</span>
+                        <span class="muted">reorder at 2</span>
+                    </div>
+                    <div class="inv-meter low" role="img" aria-label="2 in stock, reorder level 2"><i style="width: 33%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 2 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱89,000.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive--product-6.html" title="Receive stock" aria-label="Receive stock for S&amp;W M&amp;P15 Sport III"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="adjust--id-6.html" title="Adjust stock" aria-label="Adjust stock for S&amp;W M&amp;P15 Sport III"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="product--id-6.html" title="Edit" aria-label="Edit S&amp;W M&amp;P15 Sport III"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="s&amp;w model 686 4&quot; fa-s&amp;w686 firearm .357 magnum smith &amp; wesson model 686 4 in barrel · 6 rounds">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg></span>
+                                        <span class="inv-sku mono">FA-S&amp;W686</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Smith &amp; Wesson</span>
+                    <h3>S&amp;W Model 686 4&quot;</h3>
+                    <p>4 in barrel · 6 rounds</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>.357 Magnum</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>2</strong> on hand</span>
+                        <span class="muted">reorder at 1</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="2 in stock, reorder level 1"><i style="width: 67%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 2 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱68,000.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for S&amp;W Model 686 4&quot;"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for S&amp;W Model 686 4&quot;"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit S&amp;W Model 686 4&quot;"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-firearm" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="sig sauer p320 carry fa-p320c firearm 9mm luger sig sauer p320 carry 3.9 in barrel · 15+1">
+                <div class="inv-visual">
+                                            <img class="inv-photo" src="assets/images/sig-sauer-p320-carry.png" alt="SIG Sauer P320 Carry" loading="lazy">
+                                        <span class="inv-sku mono">FA-P320C</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">SIG Sauer</span>
+                    <h3>SIG Sauer P320 Carry</h3>
+                    <p>3.9 in barrel · 15+1</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>9mm Luger</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>3</strong> on hand</span>
+                        <span class="muted">reorder at 2</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="3 in stock, reorder level 2"><i style="width: 50%"></i></div>
+                                            <a class="inv-serials" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg> 3 serials on hand <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱52,000.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for SIG Sauer P320 Carry"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for SIG Sauer P320 Carry"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit SIG Sauer P320 Carry"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                            <a class="inv-card inv-add" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones.">
+                <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><strong>Add firearm</strong><span>Create a new firearm product</span>
+            </a>
+                </div>
+    </section>
+        <section class="inv-group" data-filter-group>
+        <h2 class="group-title"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg>Ammunition <span>8 items · Matched to gun models by caliber</span></h2>
+        <div class="inv-grid">
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search=".22 lr 40gr lrn am-22lr40 ammunition .22 lr   100 rounds / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-22LR40</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>.22 LR 40gr LRN</h3>
+                    <p>100 rounds / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>.22 LR</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>45</strong> on hand</span>
+                        <span class="muted">reorder at 25</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="45 in stock, reorder level 25"><i style="width: 60%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱650.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for .22 LR 40gr LRN"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for .22 LR 40gr LRN"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit .22 LR 40gr LRN"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search=".357 magnum jsp 158gr am-357jsp ammunition .357 magnum   50 rounds / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-357JSP</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>.357 Magnum JSP 158gr</h3>
+                    <p>50 rounds / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>.357 Magnum</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>20</strong> on hand</span>
+                        <span class="muted">reorder at 15</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="20 in stock, reorder level 15"><i style="width: 44%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱2,800.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for .357 Magnum JSP 158gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for .357 Magnum JSP 158gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit .357 Magnum JSP 158gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search=".45 acp fmj 230gr am-45fmj230 ammunition .45 acp   50 rounds / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-45FMJ230</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>.45 ACP FMJ 230gr</h3>
+                    <p>50 rounds / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>.45 ACP</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>88</strong> on hand</span>
+                        <span class="muted">reorder at 40</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="88 in stock, reorder level 40"><i style="width: 73%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱2,250.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for .45 ACP FMJ 230gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for .45 ACP FMJ 230gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="product--id-11.html" title="Edit" aria-label="Edit .45 ACP FMJ 230gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="12 gauge #8 birdshot am-12g8bird ammunition 12 gauge   25 shells / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-12G8BIRD</span>
+                    <span class="status low">Low stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>12 Gauge #8 Birdshot</h3>
+                    <p>25 shells / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>12 Gauge</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>8</strong> on hand</span>
+                        <span class="muted">reorder at 20</span>
+                    </div>
+                    <div class="inv-meter low" role="img" aria-label="8 in stock, reorder level 20"><i style="width: 13%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,150.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive--product-16.html" title="Receive stock" aria-label="Receive stock for 12 Gauge #8 Birdshot"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="adjust--id-16.html" title="Adjust stock" aria-label="Adjust stock for 12 Gauge #8 Birdshot"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="product--id-16.html" title="Edit" aria-label="Edit 12 Gauge #8 Birdshot"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="12 gauge 00 buck am-12g00b ammunition 12 gauge   5 shells / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-12G00B</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>12 Gauge 00 Buck</h3>
+                    <p>5 shells / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>12 Gauge</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>48</strong> on hand</span>
+                        <span class="muted">reorder at 20</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="48 in stock, reorder level 20"><i style="width: 80%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱480.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for 12 Gauge 00 Buck"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for 12 Gauge 00 Buck"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit 12 Gauge 00 Buck"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="5.56 nato fmj 55gr am-556fmj55 ammunition 5.56×45mm nato   20 rounds / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-556FMJ55</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>5.56 NATO FMJ 55gr</h3>
+                    <p>20 rounds / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>5.56×45mm NATO</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>45</strong> on hand</span>
+                        <span class="muted">reorder at 30</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="45 in stock, reorder level 30"><i style="width: 50%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,100.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for 5.56 NATO FMJ 55gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for 5.56 NATO FMJ 55gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit 5.56 NATO FMJ 55gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="9mm fmj 115gr am-9fmj115 ammunition 9mm luger   50 rounds / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-9FMJ115</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>9mm FMJ 115gr</h3>
+                    <p>50 rounds / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>9mm Luger</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>224</strong> on hand</span>
+                        <span class="muted">reorder at 60</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="224 in stock, reorder level 60"><i style="width: 100%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,350.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for 9mm FMJ 115gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for 9mm FMJ 115gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit 9mm FMJ 115gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-ammunition" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="9mm jhp 124gr am-9jhp124 ammunition 9mm luger   20 rounds / box">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span>
+                                        <span class="inv-sku mono">AM-9JHP124</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Ammunition</span>
+                    <h3>9mm JHP 124gr</h3>
+                    <p>20 rounds / box</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>9mm Luger</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>74</strong> on hand</span>
+                        <span class="muted">reorder at 30</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="74 in stock, reorder level 30"><i style="width: 82%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,450.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for 9mm JHP 124gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for 9mm JHP 124gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="product--id-10.html" title="Edit" aria-label="Edit 9mm JHP 124gr"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                            <a class="inv-card inv-add" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones.">
+                <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><strong>Add ammunition</strong><span>Create a new ammunition product</span>
+            </a>
+                </div>
+    </section>
+        <section class="inv-group" data-filter-group>
+        <h2 class="group-title"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg>Accessories &amp; gear <span>8 items · Magazines, holsters, safety and range gear</span></h2>
+        <div class="inv-grid">
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="1911 magazine ac-1911mag accessory .45 acp armscor rock island m1911-a1 gi 8 rounds · steel">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-1911MAG</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Armscor</span>
+                    <h3>1911 Magazine</h3>
+                    <p>8 rounds · steel</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>.45 ACP</span>                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg>Fits Rock Island M1911-A1 GI</span>                                            </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>16</strong> on hand</span>
+                        <span class="muted">reorder at 6</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="16 in stock, reorder level 6"><i style="width: 89%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,500.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for 1911 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for 1911 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit 1911 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="ar-15 magazine ac-ar15mag accessory 5.56×45mm nato smith &amp; wesson m&amp;p15 sport iii 30 rounds · polymer">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-AR15MAG</span>
+                    <span class="status low">Low stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Smith &amp; Wesson</span>
+                    <h3>AR-15 Magazine</h3>
+                    <p>30 rounds · polymer</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>5.56×45mm NATO</span>                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg>Fits M&amp;P15 Sport III</span>                                            </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>7</strong> on hand</span>
+                        <span class="muted">reorder at 10</span>
+                    </div>
+                    <div class="inv-meter low" role="img" aria-label="7 in stock, reorder level 10"><i style="width: 23%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,600.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive--product-18.html" title="Receive stock" aria-label="Receive stock for AR-15 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="adjust--id-18.html" title="Adjust stock" aria-label="Adjust stock for AR-15 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="product--id-18.html" title="Edit" aria-label="Edit AR-15 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="biometric pistol safe ac-safe accessory    fingerprint + key backup">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-SAFE</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Accessory</span>
+                    <h3>Biometric Pistol Safe</h3>
+                    <p>Fingerprint + key backup</p>                    <div class="inv-tags">
+                                                                                            </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>6</strong> on hand</span>
+                        <span class="muted">reorder at 2</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="6 in stock, reorder level 2"><i style="width: 100%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱8,900.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Biometric Pistol Safe"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Biometric Pistol Safe"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Biometric Pistol Safe"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="cleaning kit — 9mm/.38/.357 ac-clean9 accessory 9mm luger   rod, brushes, patches">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-CLEAN9</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Accessory</span>
+                    <h3>Cleaning Kit — 9mm/.38/.357</h3>
+                    <p>Rod, brushes, patches</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>9mm Luger</span>                                                                    </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>11</strong> on hand</span>
+                        <span class="muted">reorder at 5</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="11 in stock, reorder level 5"><i style="width: 73%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,250.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Cleaning Kit — 9mm/.38/.357"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Cleaning Kit — 9mm/.38/.357"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Cleaning Kit — 9mm/.38/.357"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="eye &amp; ear protection kit ac-eyeear accessory    clear glasses · 31 db muffs">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-EYEEAR</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Accessory</span>
+                    <h3>Eye &amp; Ear Protection Kit</h3>
+                    <p>Clear glasses · 31 dB muffs</p>                    <div class="inv-tags">
+                                                                                            </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>27</strong> on hand</span>
+                        <span class="muted">reorder at 8</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="27 in stock, reorder level 8"><i style="width: 100%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱1,850.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Eye &amp; Ear Protection Kit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Eye &amp; Ear Protection Kit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Eye &amp; Ear Protection Kit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="glock 17 magazine ac-glk17mag accessory 9mm luger glock glock 17 gen5 17 rounds · factory">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-GLK17MAG</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Glock</span>
+                    <h3>Glock 17 Magazine</h3>
+                    <p>17 rounds · factory</p>                    <div class="inv-tags">
+                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>9mm Luger</span>                        <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg>Fits Glock 17 Gen5</span>                                            </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>24</strong> on hand</span>
+                        <span class="muted">reorder at 8</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="24 in stock, reorder level 8"><i style="width: 100%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱2,200.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Glock 17 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Glock 17 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Glock 17 Magazine"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="kydex iwb holster — g19 ac-g19hol accessory  glock glock 19 gen5 black · ambidextrous clip">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-G19HOL</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Glock</span>
+                    <h3>Kydex IWB Holster — G19</h3>
+                    <p>Black · ambidextrous clip</p>                    <div class="inv-tags">
+                                                <span class="caliber-tag"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg>Fits Glock 19 Gen5</span>                                            </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>11</strong> on hand</span>
+                        <span class="muted">reorder at 5</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="11 in stock, reorder level 5"><i style="width: 73%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱2,400.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Kydex IWB Holster — G19"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Kydex IWB Holster — G19"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Kydex IWB Holster — G19"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                    <article class="inv-card inv-accessory" data-product-card
+                data-purchase-url="sale-new.html"
+                data-search="range bag — standard ac-rangebag accessory    black · padded interior">
+                <div class="inv-visual">
+                                            <span class="inv-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span>
+                                        <span class="inv-sku mono">AC-RANGEBAG</span>
+                    <span class="status ok">In stock</span>
+                </div>
+                <div class="inv-body">
+                    <span class="inv-eyebrow">Accessory</span>
+                    <h3>Range Bag — Standard</h3>
+                    <p>Black · padded interior</p>                    <div class="inv-tags">
+                                                                                            </div>
+                </div>
+                <div class="inv-stock">
+                    <div class="inv-stock-row">
+                        <span><strong>21</strong> on hand</span>
+                        <span class="muted">reorder at 5</span>
+                    </div>
+                    <div class="inv-meter ok" role="img" aria-label="21 in stock, reorder level 5"><i style="width: 100%"></i></div>
+                                    </div>
+                <footer class="inv-foot">
+                    <strong class="inv-price">₱2,950.00</strong>
+                    <span class="inv-actions">
+                        <a class="icon-btn" href="receive.html" title="Receive stock" aria-label="Receive stock for Range Bag — Standard"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></a>
+                                                    <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Adjust stock" aria-label="Adjust stock for Range Bag — Standard"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10m4 0h2M4 12h4m4 0h8M4 18h12m4 0h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></a>
+                            <a class="icon-btn" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." title="Edit" aria-label="Edit Range Bag — Standard"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg></a>
+                                            </span>
+                </footer>
+            </article>
+                            <a class="inv-card inv-add" href="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones.">
+                <svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><strong>Add accessory</strong><span>Create a new accessory product</span>
+            </a>
+                </div>
+    </section>
+    </div>
+<p class="panel empty-search" data-empty-for="#inventory-cards" hidden>No items match your search.</p>
+
+
+        </div>
+        <footer class="app-footer">
+            <span>© 2026 BlackStrike</span>
+            <span>Dealer License No. DL-0000-0000</span>
+        </footer>
+    </main>
+</div>
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+<div class="modal" id="confirm-modal" hidden>
+    <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+        <h2 id="confirm-title">Are you sure?</h2>
+        <p id="confirm-text"></p>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" data-modal-cancel>Cancel</button>
+            <button type="button" class="btn btn-danger" data-modal-confirm>Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="demo-ribbon" role="status"><b>DEMO</b><span>HTML version with sample data. Changes are not saved.</span>
+  <button type="button" aria-label="Hide" onclick="this.parentNode.remove()">×</button></div>
+<script>
+(function () {
+  var t;
+  function toast(msg) {
+    var el = document.querySelector('.demo-toast');
+    if (!el) { el = document.createElement('div'); el.className = 'demo-toast'; el.setAttribute('role', 'alert'); document.body.appendChild(el); }
+    el.textContent = msg; el.classList.add('show'); clearTimeout(t); t = setTimeout(function () { el.classList.remove('show'); }, 3200);
+  }
+  // Forms: the demo has no server, so nothing can be saved.
+  document.addEventListener('submit', function (e) {
+    var f = e.target, go = f.getAttribute('data-demo-go'), b = e.submitter;
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (go) { location.href = go; return; }
+    if (b && /export\.php/.test(b.getAttribute('formaction') || '')) { toast('CSV download works in the full app (it is generated by PHP).'); return; }
+    toast(f.getAttribute('data-demo-msg') || 'Demo mode: saving is turned off. Saving needs the PHP version (XAMPP).');
+  }, true);
+  // Links to pages that aren't in the demo.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#demo"]');
+    if (!a) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    toast(a.getAttribute('data-demo-msg') || 'This page isn’t included in the demo. It works in the full app.');
+  }, true);
+})();
+</script>
+</body>
+</html>
+    

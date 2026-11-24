@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08090b">
+    <meta name="description" content="BlackStrike — inventory, sales, catalog and compliance records.">
+    <title>Reports · BlackStrike</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Cpath%20d%3D%22M20%202.5%2035.5%208v11.5c0%209.6-6.7%2015.9-15.5%2018.2C11.2%2035.4%204.5%2029.1%204.5%2019.5V8z%22%20fill%3D%22%23111216%22%20stroke%3D%22%2355575e%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M23.6%207.5%2012.4%2022.4h7.2l-3.1%2010.6%2012.3-16.1h-7.4z%22%20fill%3D%22%23ed1428%22%2F%3E%3C%2Fsvg%3E">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.3.0">
+    <script src="assets/js/app.js?v=2.3.0" defer></script>
+
+<style id="demo-mode">
+  .demo-ribbon{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:2147483000;display:flex;align-items:center;gap:10px;
+    padding:9px 16px;border-radius:999px;background:rgba(18,18,22,.94);border:1px solid rgba(229,72,77,.55);color:#f1f1f4;
+    font:500 13px/1.3 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 24px)}
+  .demo-ribbon b{color:#ff6b70;letter-spacing:.08em;font-weight:700}
+  .demo-ribbon button{background:none;border:0;color:#9a9aa5;cursor:pointer;font-size:16px;line-height:1;padding:0 0 0 4px}
+  .demo-toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%) translateY(10px);z-index:2147483001;opacity:0;
+    transition:opacity .2s,transform .2s;padding:12px 18px;border-radius:12px;background:#e5484d;color:#fff;
+    font:600 14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 12px 34px rgba(0,0,0,.45);max-width:min(560px,calc(100vw - 24px));text-align:center}
+  .demo-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media print{.demo-ribbon,.demo-toast{display:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+        <a class="brand" href="dashboard.html" aria-label="BlackStrike home">
+            <span class="logo logo-sidebar"><svg class="brand-emblem" width="44" height="44" style="width:44px;height:44px" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><defs><linearGradient id="bs-shield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22242a"/><stop offset="1" stop-color="#0a0b0d"/></linearGradient></defs><path d="M20 2.5 35.5 8v11.5c0 9.6-6.7 15.9-15.5 18.2C11.2 35.4 4.5 29.1 4.5 19.5V8z" fill="url(#bs-shield)" stroke="#4a4c53" stroke-width="1.2"/><path d="M20 5.6 32.6 10v9.5c0 7.9-5.4 13.2-12.6 15.3" fill="none" stroke="#ffffff14" stroke-width="1"/><path d="M23.6 7.5 12.4 22.4h7.2l-3.1 10.6 12.3-16.1h-7.4z" fill="#ed1428"/></svg><span class="logo-text"><span class="logo-word"><span>BLACK</span><span>STRIKE</span></span><span class="logo-caption">GUNS &amp; AMMUNITION</span></span></span>        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="dashboard.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>Dashboard</span></a><a class="nav-link" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg><span>Inventory</span></a><a class="nav-link" href="sales.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span>Sales</span></a><a class="nav-link" href="catalog.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg><span>Catalog by Model</span></a><a class="nav-link active" href="reports.html" aria-current="page"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg><span>Reports</span><span class="nav-active-mark"></span></a><a class="nav-link" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></a><a class="nav-link" href="about.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-9.5v.5"/></svg><span>About the Shop</span></a>                            <div class="nav-section">Administration</div>
+                <a class="nav-link" href="users.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7m2.5 8.5a6.5 6.5 0 0 0-3-5.5"/></svg><span>Users</span></a><a class="nav-link" href="models.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg><span>Gun Models</span></a><a class="nav-link" href="activity.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Activity Log</span></a>                    </nav>
+        <div class="sidebar-note">
+            <span class="sidebar-note-line"></span>
+            <p>ARMED WITH<br><strong>PRECISION.</strong></p>
+        </div>
+        <div class="sidebar-foot">
+                            <span class="sidebar-user">Shop Administrator</span><span>ADMINISTRATOR</span>
+                    </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+            <div class="crumb"><span class="crumb-dot"></span> <span class="crumb-store">BLACKSTRIKE</span> <span class="crumb-rule"></span> <span>REPORTS</span></div>
+            <div class="topbar-right">
+                                                            <a class="topbar-action" href="sale-new.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span>New sale</span></a>
+                                        <span class="topbar-divider"></span>
+                    <div class="profile-menu">
+                        <button class="profile-button" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                            <span class="avatar">S</span>
+                        </button>
+                        <div class="profile-dropdown" role="menu">
+                            <div class="profile-summary">
+                                <strong>Shop Administrator</strong>
+                                <span>@admin · Administrator</span>
+                            </div>
+                                                        <a role="menuitem" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> My profile</a>
+                            <a role="menuitem" href="settings--tab-shop.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9h16l-1-5H5zM4 9v11h16V9M9 20v-6h6v6"/></svg> Shop settings</a>                            <form method="post" action="index.html" data-demo-go="index.html"><input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><button type="submit" role="menuitem"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l5-5-5-5m5 5H3"/></svg> Sign out</button></form>
+                        </div>
+                    </div>
+                            </div>
+        </header>
+
+        <div class="toast-region" aria-live="polite">
+                    </div>
+
+        <div class="page-content" id="content">
+        <section class="view-heading">
+        <div>
+            <div class="eyebrow">PERFORMANCE &amp; COMPLIANCE</div>
+            <h1>Reports</h1>
+            <p>Analyze sales, then generate numbered, printable reports for compliance and records.</p>        </div>
+            </section>
+    <form class="filter-bar" method="get">
+    <input type="hidden" name="page" value="reports">
+    <label class="date-field"><span>From</span><input type="date" name="from" value="2026-09-01"></label>
+    <label class="date-field"><span>To</span><input type="date" name="to" value="2026-11-24"></label>
+    <button class="btn btn-ghost btn-sm" type="submit">Update</button>
+    <div class="preset-row">
+                    <a class="chip " href="reports--from-2026-11-01--to-2026-11-24.html">This month</a>
+                    <a class="chip active" href="reports--from-2026-09-01--to-2026-11-24.html">Last 3 months</a>
+                    <a class="chip " href="reports--from-2026-05-01--to-2026-11-24.html">Last 7 months</a>
+                    <a class="chip " href="reports.html">This year</a>
+            </div>
+</form>
+
+<section class="report-grid">
+    <article class="panel report-panel">
+        <div class="panel-heading"><h2>Monthly revenue</h2><span class="table-note">Sep 1, 2026 – Nov 24, 2026</span></div>
+        <div class="bar-chart" style="--cols: 3" role="img" aria-label="Monthly revenue chart">
+                            <div class="bar-column" title="September 2026: ₱134,490.00">
+                    <span class="bar-value">134k</span>
+                    <div class="bar-track"><i style="height: 30%"></i></div>
+                    <span class="bar-label">SEP</span>
+                </div>
+                            <div class="bar-column" title="October 2026: ₱292,540.00">
+                    <span class="bar-value">293k</span>
+                    <div class="bar-track"><i style="height: 64%"></i></div>
+                    <span class="bar-label">OCT</span>
+                </div>
+                            <div class="bar-column" title="November 2026: ₱455,160.00">
+                    <span class="bar-value">455k</span>
+                    <div class="bar-track"><i style="height: 100%"></i></div>
+                    <span class="bar-label">NOV</span>
+                </div>
+                    </div>
+    </article>
+    <article class="panel report-summary">
+        <div class="panel-heading"><h2>At a glance</h2></div>
+        <div class="summary-row"><span>Revenue in period</span><strong>₱882,190.00</strong></div>
+        <div class="summary-row"><span>Completed sales</span><strong>40</strong></div>
+        <div class="summary-row"><span>Average sale</span><strong>₱22,054.75</strong></div>
+        <div class="summary-row"><span>Stock value today</span><strong>₱2,907,140.00</strong></div>
+        <div class="summary-foot">Voided sales are excluded from revenue.</div>
+    </article>
+</section>
+
+<section class="report-grid second">
+    <article class="panel report-panel">
+        <div class="panel-heading"><h2>Revenue by category</h2></div>
+                <div class="hbars">
+                            <div class="hbar">
+                    <div class="hbar-label"><span>Firearm</span><strong>₱722,000.00 · 82%</strong></div>
+                    <div class="hbar-track"><i class="cat-fill-firearm" style="width: 82%"></i></div>
+                </div>
+                            <div class="hbar">
+                    <div class="hbar-label"><span>Ammunition</span><strong>₱141,840.00 · 16%</strong></div>
+                    <div class="hbar-track"><i class="cat-fill-ammunition" style="width: 16%"></i></div>
+                </div>
+                            <div class="hbar">
+                    <div class="hbar-label"><span>Accessory</span><strong>₱18,350.00 · 2%</strong></div>
+                    <div class="hbar-track"><i class="cat-fill-accessory" style="width: 2%"></i></div>
+                </div>
+                    </div>
+    </article>
+    <article class="panel report-panel">
+        <div class="panel-heading"><h2>Top products</h2></div>
+                <table class="data-table compact">
+            <thead><tr><th>Product</th><th class="num">Units</th><th class="num">Revenue</th></tr></thead>
+            <tbody><tr><td><span class="item-name">S&amp;W M&amp;P15 Sport III</span><small class="cell-sub">Firearm</small></td><td class="num">2</td><td class="num">₱178,000.00</td></tr><tr><td><span class="item-name">Glock 19 Gen5</span><small class="cell-sub">Firearm</small></td><td class="num">3</td><td class="num">₱142,500.00</td></tr><tr><td><span class="item-name">SIG Sauer P320 Carry</span><small class="cell-sub">Firearm</small></td><td class="num">2</td><td class="num">₱104,000.00</td></tr><tr><td><span class="item-name">Glock 17 Gen5</span><small class="cell-sub">Firearm</small></td><td class="num">2</td><td class="num">₱97,000.00</td></tr><tr><td><span class="item-name">Rock Island M1911-A1 GI</span><small class="cell-sub">Firearm</small></td><td class="num">3</td><td class="num">₱96,000.00</td></tr><tr><td><span class="item-name">Remington 870 Express</span><small class="cell-sub">Firearm</small></td><td class="num">2</td><td class="num">₱78,000.00</td></tr></tbody>
+        </table>
+            </article>
+</section>
+
+<section class="official" id="official">
+    <div class="section-title">
+        <div><div class="eyebrow">COMPLIANCE & RECORDS</div><h2>Official printable reports</h2></div>
+        <p>Each report gets a unique control number, letterhead, certification and signature block. Use your browser’s <strong>Print</strong> dialog and choose “Save as PDF” to file a digital copy.</p>
+    </div>
+    <div class="official-grid">
+                    <form class="official-card" method="post" action="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." target="_blank">
+                <input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><input type="hidden" name="report" value="inventory">
+                <div class="official-head"><span class="official-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg></span><span class="official-code">INV</span></div>
+                <h3>Inventory Status Report</h3>
+                <p>Stock on hand, valuation and reorder status for every active product, as of the time of printing.</p>
+                                    <div class="official-range"><span class="muted small"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> As of the time of printing</span></div>
+                                <div class="official-actions">
+                    <button class="btn btn-primary btn-sm" type="submit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Generate & print</button>
+                    <button class="btn btn-ghost btn-sm" type="submit" formaction="export.php" formmethod="get" formtarget="_self"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></svg> CSV</button>
+                </div>
+            </form>
+                    <form class="official-card" method="post" action="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." target="_blank">
+                <input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><input type="hidden" name="report" value="firearms">
+                <div class="official-head"><span class="official-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="official-code">FAD</span></div>
+                <h3>Firearms Acquisition &amp; Disposition Record</h3>
+                <p>Serial-level record of each firearm received and disposed of in the period, with source, buyer and license details.</p>
+                                    <div class="official-range">
+                        <label class="date-field"><span>From</span><input type="date" name="from" value="2026-11-01" max="2026-11-24" required></label>
+                        <label class="date-field"><span>To</span><input type="date" name="to" value="2026-11-24" max="2026-11-24" required></label>
+                    </div>
+                                <div class="official-actions">
+                    <button class="btn btn-primary btn-sm" type="submit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Generate & print</button>
+                    <button class="btn btn-ghost btn-sm" type="submit" formaction="export.php" formmethod="get" formtarget="_self"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></svg> CSV</button>
+                </div>
+            </form>
+                    <form class="official-card" method="post" action="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." target="_blank">
+                <input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><input type="hidden" name="report" value="ammunition">
+                <div class="official-head"><span class="official-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg></span><span class="official-code">AMS</span></div>
+                <h3>Ammunition Sales Log</h3>
+                <p>Every ammunition sale with buyer identity, license number, caliber, boxes and total rounds.</p>
+                                    <div class="official-range">
+                        <label class="date-field"><span>From</span><input type="date" name="from" value="2026-11-01" max="2026-11-24" required></label>
+                        <label class="date-field"><span>To</span><input type="date" name="to" value="2026-11-24" max="2026-11-24" required></label>
+                    </div>
+                                <div class="official-actions">
+                    <button class="btn btn-primary btn-sm" type="submit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Generate & print</button>
+                    <button class="btn btn-ghost btn-sm" type="submit" formaction="export.php" formmethod="get" formtarget="_self"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></svg> CSV</button>
+                </div>
+            </form>
+                    <form class="official-card" method="post" action="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." target="_blank">
+                <input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><input type="hidden" name="report" value="sales">
+                <div class="official-head"><span class="official-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></span><span class="official-code">SLR</span></div>
+                <h3>Sales Register</h3>
+                <p>Chronological list of all transactions in the period, including voided sales, with totals.</p>
+                                    <div class="official-range">
+                        <label class="date-field"><span>From</span><input type="date" name="from" value="2026-11-01" max="2026-11-24" required></label>
+                        <label class="date-field"><span>To</span><input type="date" name="to" value="2026-11-24" max="2026-11-24" required></label>
+                    </div>
+                                <div class="official-actions">
+                    <button class="btn btn-primary btn-sm" type="submit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Generate & print</button>
+                    <button class="btn btn-ghost btn-sm" type="submit" formaction="export.php" formmethod="get" formtarget="_self"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></svg> CSV</button>
+                </div>
+            </form>
+                    <form class="official-card" method="post" action="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." target="_blank">
+                <input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><input type="hidden" name="report" value="movements">
+                <div class="official-head"><span class="official-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><span class="official-code">STM</span></div>
+                <h3>Stock Movement Report</h3>
+                <p>Audit trail of all stock received, sold, adjusted and restored, with running balances and the responsible user.</p>
+                                    <div class="official-range">
+                        <label class="date-field"><span>From</span><input type="date" name="from" value="2026-11-01" max="2026-11-24" required></label>
+                        <label class="date-field"><span>To</span><input type="date" name="to" value="2026-11-24" max="2026-11-24" required></label>
+                    </div>
+                                <div class="official-actions">
+                    <button class="btn btn-primary btn-sm" type="submit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Generate & print</button>
+                    <button class="btn btn-ghost btn-sm" type="submit" formaction="export.php" formmethod="get" formtarget="_self"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></svg> CSV</button>
+                </div>
+            </form>
+                    <form class="official-card" method="post" action="#demo" data-demo-msg="This record isn’t in the HTML version. Open one of the most recent ones." target="_blank">
+                <input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><input type="hidden" name="report" value="reorder">
+                <div class="official-head"><span class="official-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 2 20h20z"/><path d="M12 10v4m0 3v.5"/></svg></span><span class="official-code">RLS</span></div>
+                <h3>Reorder &amp; Low Stock Report</h3>
+                <p>Products at or below reorder level with a suggested order quantity, for purchasing.</p>
+                                    <div class="official-range"><span class="muted small"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> As of the time of printing</span></div>
+                                <div class="official-actions">
+                    <button class="btn btn-primary btn-sm" type="submit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg> Generate & print</button>
+                    <button class="btn btn-ghost btn-sm" type="submit" formaction="export.php" formmethod="get" formtarget="_self"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m-5-5 5 5 5-5M4 21h16"/></svg> CSV</button>
+                </div>
+            </form>
+            </div>
+
+    <article class="panel table-panel">
+        <div class="panel-heading"><h2>Report register</h2><span class="table-note">Last 10 generated reports</span></div>
+                    <div class="empty-state"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg><strong>No reports generated yet</strong><p>Generated reports are logged here with their control numbers so they can be reprinted.</p></div>            </article>
+</section>
+        </div>
+        <footer class="app-footer">
+            <span>© 2026 BlackStrike</span>
+            <span>Dealer License No. DL-0000-0000</span>
+        </footer>
+    </main>
+</div>
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+<div class="modal" id="confirm-modal" hidden>
+    <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+        <h2 id="confirm-title">Are you sure?</h2>
+        <p id="confirm-text"></p>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" data-modal-cancel>Cancel</button>
+            <button type="button" class="btn btn-danger" data-modal-confirm>Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="demo-ribbon" role="status"><b>DEMO</b><span>HTML version with sample data. Changes are not saved.</span>
+  <button type="button" aria-label="Hide" onclick="this.parentNode.remove()">×</button></div>
+<script>
+(function () {
+  var t;
+  function toast(msg) {
+    var el = document.querySelector('.demo-toast');
+    if (!el) { el = document.createElement('div'); el.className = 'demo-toast'; el.setAttribute('role', 'alert'); document.body.appendChild(el); }
+    el.textContent = msg; el.classList.add('show'); clearTimeout(t); t = setTimeout(function () { el.classList.remove('show'); }, 3200);
+  }
+  // Forms: the demo has no server, so nothing can be saved.
+  document.addEventListener('submit', function (e) {
+    var f = e.target, go = f.getAttribute('data-demo-go'), b = e.submitter;
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (go) { location.href = go; return; }
+    if (b && /export\.php/.test(b.getAttribute('formaction') || '')) { toast('CSV download works in the full app (it is generated by PHP).'); return; }
+    toast(f.getAttribute('data-demo-msg') || 'Demo mode: saving is turned off. Saving needs the PHP version (XAMPP).');
+  }, true);
+  // Links to pages that aren't in the demo.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#demo"]');
+    if (!a) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    toast(a.getAttribute('data-demo-msg') || 'This page isn’t included in the demo. It works in the full app.');
+  }, true);
+})();
+</script>
+</body>
+</html>
+    

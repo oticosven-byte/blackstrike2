@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08090b">
+    <meta name="description" content="BlackStrike — inventory, sales, catalog and compliance records.">
+    <title>Receive stock · BlackStrike</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Cpath%20d%3D%22M20%202.5%2035.5%208v11.5c0%209.6-6.7%2015.9-15.5%2018.2C11.2%2035.4%204.5%2029.1%204.5%2019.5V8z%22%20fill%3D%22%23111216%22%20stroke%3D%22%2355575e%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M23.6%207.5%2012.4%2022.4h7.2l-3.1%2010.6%2012.3-16.1h-7.4z%22%20fill%3D%22%23ed1428%22%2F%3E%3C%2Fsvg%3E">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.3.0">
+    <script src="assets/js/app.js?v=2.3.0" defer></script>
+
+<style id="demo-mode">
+  .demo-ribbon{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:2147483000;display:flex;align-items:center;gap:10px;
+    padding:9px 16px;border-radius:999px;background:rgba(18,18,22,.94);border:1px solid rgba(229,72,77,.55);color:#f1f1f4;
+    font:500 13px/1.3 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 24px)}
+  .demo-ribbon b{color:#ff6b70;letter-spacing:.08em;font-weight:700}
+  .demo-ribbon button{background:none;border:0;color:#9a9aa5;cursor:pointer;font-size:16px;line-height:1;padding:0 0 0 4px}
+  .demo-toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%) translateY(10px);z-index:2147483001;opacity:0;
+    transition:opacity .2s,transform .2s;padding:12px 18px;border-radius:12px;background:#e5484d;color:#fff;
+    font:600 14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 12px 34px rgba(0,0,0,.45);max-width:min(560px,calc(100vw - 24px));text-align:center}
+  .demo-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media print{.demo-ribbon,.demo-toast{display:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+        <a class="brand" href="dashboard.html" aria-label="BlackStrike home">
+            <span class="logo logo-sidebar"><svg class="brand-emblem" width="44" height="44" style="width:44px;height:44px" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><defs><linearGradient id="bs-shield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22242a"/><stop offset="1" stop-color="#0a0b0d"/></linearGradient></defs><path d="M20 2.5 35.5 8v11.5c0 9.6-6.7 15.9-15.5 18.2C11.2 35.4 4.5 29.1 4.5 19.5V8z" fill="url(#bs-shield)" stroke="#4a4c53" stroke-width="1.2"/><path d="M20 5.6 32.6 10v9.5c0 7.9-5.4 13.2-12.6 15.3" fill="none" stroke="#ffffff14" stroke-width="1"/><path d="M23.6 7.5 12.4 22.4h7.2l-3.1 10.6 12.3-16.1h-7.4z" fill="#ed1428"/></svg><span class="logo-text"><span class="logo-word"><span>BLACK</span><span>STRIKE</span></span><span class="logo-caption">GUNS &amp; AMMUNITION</span></span></span>        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="dashboard.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>Dashboard</span></a><a class="nav-link active" href="inventory.html" aria-current="page"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg><span>Inventory</span><span class="nav-active-mark"></span></a><a class="nav-link" href="sales.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span>Sales</span></a><a class="nav-link" href="catalog.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg><span>Catalog by Model</span></a><a class="nav-link" href="reports.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg><span>Reports</span></a><a class="nav-link" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></a><a class="nav-link" href="about.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-9.5v.5"/></svg><span>About the Shop</span></a>                            <div class="nav-section">Administration</div>
+                <a class="nav-link" href="users.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7m2.5 8.5a6.5 6.5 0 0 0-3-5.5"/></svg><span>Users</span></a><a class="nav-link" href="models.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg><span>Gun Models</span></a><a class="nav-link" href="activity.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Activity Log</span></a>                    </nav>
+        <div class="sidebar-note">
+            <span class="sidebar-note-line"></span>
+            <p>ARMED WITH<br><strong>PRECISION.</strong></p>
+        </div>
+        <div class="sidebar-foot">
+                            <span class="sidebar-user">Shop Administrator</span><span>ADMINISTRATOR</span>
+                    </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+            <div class="crumb"><span class="crumb-dot"></span> <span class="crumb-store">BLACKSTRIKE</span> <span class="crumb-rule"></span> <span>RECEIVE STOCK</span></div>
+            <div class="topbar-right">
+                                                            <a class="topbar-action" href="sale-new.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span>New sale</span></a>
+                                        <span class="topbar-divider"></span>
+                    <div class="profile-menu">
+                        <button class="profile-button" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                            <span class="avatar">S</span>
+                        </button>
+                        <div class="profile-dropdown" role="menu">
+                            <div class="profile-summary">
+                                <strong>Shop Administrator</strong>
+                                <span>@admin · Administrator</span>
+                            </div>
+                                                        <a role="menuitem" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> My profile</a>
+                            <a role="menuitem" href="settings--tab-shop.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9h16l-1-5H5zM4 9v11h16V9M9 20v-6h6v6"/></svg> Shop settings</a>                            <form method="post" action="index.html" data-demo-go="index.html"><input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><button type="submit" role="menuitem"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l5-5-5-5m5 5H3"/></svg> Sign out</button></form>
+                        </div>
+                    </div>
+                            </div>
+        </header>
+
+        <div class="toast-region" aria-live="polite">
+                    </div>
+
+        <div class="page-content" id="content">
+        <section class="view-heading">
+        <div>
+            <div class="eyebrow">INVENTORY</div>
+            <h1>Receive stock</h1>
+            <p>Record deliveries from suppliers. Firearms are logged individually by serial number.</p>        </div>
+        <div class="heading-actions"><a class="btn btn-ghost" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6 6-6-6 6-6"/></svg> Inventory</a></div>    </section>
+    <div class="split-layout">
+    <form method="post" class="panel form-panel" novalidate data-receive-form>
+        <input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5">                <div class="form-grid">
+            <label class="field span-2"><span>Product</span>
+                <select name="product_id" required data-product-select>
+                    <option value="">Choose a product…</option>
+                    <optgroup label="Accessory">                        <option value="19" data-category="Accessory" >1911 Magazine — AC-1911MAG (on hand: 16)</option>
+                                            <option value="18" data-category="Accessory" >AR-15 Magazine — AC-AR15MAG (on hand: 7)</option>
+                                            <option value="24" data-category="Accessory" >Biometric Pistol Safe — AC-SAFE (on hand: 6)</option>
+                                            <option value="23" data-category="Accessory" >Cleaning Kit — 9mm/.38/.357 — AC-CLEAN9 (on hand: 11)</option>
+                                            <option value="22" data-category="Accessory" >Eye &amp; Ear Protection Kit — AC-EYEEAR (on hand: 27)</option>
+                                            <option value="17" data-category="Accessory" >Glock 17 Magazine — AC-GLK17MAG (on hand: 24)</option>
+                                            <option value="20" data-category="Accessory" >Kydex IWB Holster — G19 — AC-G19HOL (on hand: 11)</option>
+                                            <option value="21" data-category="Accessory" >Range Bag — Standard — AC-RANGEBAG (on hand: 21)</option>
+                    </optgroup><optgroup label="Ammunition">                        <option value="14" data-category="Ammunition" >.22 LR 40gr LRN — AM-22LR40 (on hand: 45)</option>
+                                            <option value="12" data-category="Ammunition" >.357 Magnum JSP 158gr — AM-357JSP (on hand: 20)</option>
+                                            <option value="11" data-category="Ammunition" >.45 ACP FMJ 230gr — AM-45FMJ230 (on hand: 88)</option>
+                                            <option value="16" data-category="Ammunition" selected>12 Gauge #8 Birdshot — AM-12G8BIRD (on hand: 8)</option>
+                                            <option value="15" data-category="Ammunition" >12 Gauge 00 Buck — AM-12G00B (on hand: 48)</option>
+                                            <option value="13" data-category="Ammunition" >5.56 NATO FMJ 55gr — AM-556FMJ55 (on hand: 45)</option>
+                                            <option value="9" data-category="Ammunition" >9mm FMJ 115gr — AM-9FMJ115 (on hand: 224)</option>
+                                            <option value="10" data-category="Ammunition" >9mm JHP 124gr — AM-9JHP124 (on hand: 74)</option>
+                    </optgroup><optgroup label="Firearm">                        <option value="1" data-category="Firearm" >Glock 17 Gen5 — FA-GLK17 (on hand: 11)</option>
+                                            <option value="2" data-category="Firearm" >Glock 19 Gen5 — FA-GLK19 (on hand: 8)</option>
+                                            <option value="8" data-category="Firearm" >Remington 870 Express — FA-R870 (on hand: 2)</option>
+                                            <option value="4" data-category="Firearm" >Rock Island M1911-A1 GI — FA-RIA1911 (on hand: 6)</option>
+                                            <option value="7" data-category="Firearm" >Ruger 10/22 Carbine — FA-R1022 (on hand: 7)</option>
+                                            <option value="6" data-category="Firearm" >S&amp;W M&amp;P15 Sport III — FA-MP15 (on hand: 2)</option>
+                                            <option value="5" data-category="Firearm" >S&amp;W Model 686 4&quot; — FA-S&amp;W686 (on hand: 2)</option>
+                                            <option value="3" data-category="Firearm" >SIG Sauer P320 Carry — FA-P320C (on hand: 3)</option>
+                    </optgroup>                </select>            </label>
+            <label class="field" data-qty-field><span>Quantity received</span><input name="quantity" type="number" min="1" step="1" value="1"><small>Boxes or units, matching how the product is sold.</small></label>
+            <label class="field span-2" data-serial-field hidden><span>Serial numbers</span><textarea name="serials" rows="5" class="mono" placeholder="One serial number per line"></textarea><small data-serial-count>Quantity is counted from the serial numbers you enter.</small></label>
+            <label class="field"><span>Supplier / source</span><input name="supplier" value="" maxlength="150" required></label>
+            <label class="field"><span>DR / PO number</span><input name="reference" value="" maxlength="80" required></label>
+            <label class="field"><span>Date received</span><input name="received" type="date" value="2026-11-24" max="2026-11-24" required></label>
+            <label class="field span-2"><span>Note <em>(optional)</em></span><input name="note" value="" maxlength="255"></label>
+        </div>
+        <div class="form-actions"><span class="spacer"></span><button class="btn btn-primary" type="submit"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg> Record delivery</button></div>
+    </form>
+
+    <aside class="panel list-panel">
+        <div class="panel-heading"><h2>Recent deliveries</h2></div>
+                    <div class="activity-list">
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+70 5.56 NATO FMJ 55gr</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+60 12 Gauge 00 Buck</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+12 Glock 19 Gen5</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+20 1911 Magazine</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+14 Kydex IWB Holster — G19</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+6 Remington 870 Express</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+14 Glock 17 Gen5</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                                    <div class="activity-row">
+                        <span class="activity-icon"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>
+                        <span class="activity-description"><strong>+8 AR-15 Magazine</strong><br><small>PO-OPENING · Sample Distributor Inc.</small></span>
+                        <time>Apr 24, 2026</time>
+                    </div>
+                            </div>
+            </aside>
+</div>
+        </div>
+        <footer class="app-footer">
+            <span>© 2026 BlackStrike</span>
+            <span>Dealer License No. DL-0000-0000</span>
+        </footer>
+    </main>
+</div>
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+<div class="modal" id="confirm-modal" hidden>
+    <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+        <h2 id="confirm-title">Are you sure?</h2>
+        <p id="confirm-text"></p>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" data-modal-cancel>Cancel</button>
+            <button type="button" class="btn btn-danger" data-modal-confirm>Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="demo-ribbon" role="status"><b>DEMO</b><span>HTML version with sample data. Changes are not saved.</span>
+  <button type="button" aria-label="Hide" onclick="this.parentNode.remove()">×</button></div>
+<script>
+(function () {
+  var t;
+  function toast(msg) {
+    var el = document.querySelector('.demo-toast');
+    if (!el) { el = document.createElement('div'); el.className = 'demo-toast'; el.setAttribute('role', 'alert'); document.body.appendChild(el); }
+    el.textContent = msg; el.classList.add('show'); clearTimeout(t); t = setTimeout(function () { el.classList.remove('show'); }, 3200);
+  }
+  // Forms: the demo has no server, so nothing can be saved.
+  document.addEventListener('submit', function (e) {
+    var f = e.target, go = f.getAttribute('data-demo-go'), b = e.submitter;
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (go) { location.href = go; return; }
+    if (b && /export\.php/.test(b.getAttribute('formaction') || '')) { toast('CSV download works in the full app (it is generated by PHP).'); return; }
+    toast(f.getAttribute('data-demo-msg') || 'Demo mode: saving is turned off. Saving needs the PHP version (XAMPP).');
+  }, true);
+  // Links to pages that aren't in the demo.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#demo"]');
+    if (!a) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    toast(a.getAttribute('data-demo-msg') || 'This page isn’t included in the demo. It works in the full app.');
+  }, true);
+})();
+</script>
+</body>
+</html>
+    

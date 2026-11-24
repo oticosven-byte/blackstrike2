@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08090b">
+    <meta name="description" content="BlackStrike — inventory, sales, catalog and compliance records.">
+    <title>Shop · BlackStrike</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Cpath%20d%3D%22M20%202.5%2035.5%208v11.5c0%209.6-6.7%2015.9-15.5%2018.2C11.2%2035.4%204.5%2029.1%204.5%2019.5V8z%22%20fill%3D%22%23111216%22%20stroke%3D%22%2355575e%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M23.6%207.5%2012.4%2022.4h7.2l-3.1%2010.6%2012.3-16.1h-7.4z%22%20fill%3D%22%23ed1428%22%2F%3E%3C%2Fsvg%3E">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2.3.0">
+    <script src="assets/js/app.js?v=2.3.0" defer></script>
+
+<style id="demo-mode">
+  .demo-ribbon{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:2147483000;display:flex;align-items:center;gap:10px;
+    padding:9px 16px;border-radius:999px;background:rgba(18,18,22,.94);border:1px solid rgba(229,72,77,.55);color:#f1f1f4;
+    font:500 13px/1.3 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.45);max-width:calc(100vw - 24px)}
+  .demo-ribbon b{color:#ff6b70;letter-spacing:.08em;font-weight:700}
+  .demo-ribbon button{background:none;border:0;color:#9a9aa5;cursor:pointer;font-size:16px;line-height:1;padding:0 0 0 4px}
+  .demo-toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%) translateY(10px);z-index:2147483001;opacity:0;
+    transition:opacity .2s,transform .2s;padding:12px 18px;border-radius:12px;background:#e5484d;color:#fff;
+    font:600 14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 12px 34px rgba(0,0,0,.45);max-width:min(560px,calc(100vw - 24px));text-align:center}
+  .demo-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media print{.demo-ribbon,.demo-toast{display:none!important}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+        <a class="brand" href="dashboard.html" aria-label="BlackStrike home">
+            <span class="logo logo-sidebar"><svg class="brand-emblem" width="44" height="44" style="width:44px;height:44px" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><defs><linearGradient id="bs-shield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22242a"/><stop offset="1" stop-color="#0a0b0d"/></linearGradient></defs><path d="M20 2.5 35.5 8v11.5c0 9.6-6.7 15.9-15.5 18.2C11.2 35.4 4.5 29.1 4.5 19.5V8z" fill="url(#bs-shield)" stroke="#4a4c53" stroke-width="1.2"/><path d="M20 5.6 32.6 10v9.5c0 7.9-5.4 13.2-12.6 15.3" fill="none" stroke="#ffffff14" stroke-width="1"/><path d="M23.6 7.5 12.4 22.4h7.2l-3.1 10.6 12.3-16.1h-7.4z" fill="#ed1428"/></svg><span class="logo-text"><span class="logo-word"><span>BLACK</span><span>STRIKE</span></span><span class="logo-caption">GUNS &amp; AMMUNITION</span></span></span>        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link" href="dashboard.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>Dashboard</span></a><a class="nav-link" href="inventory.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg><span>Inventory</span></a><a class="nav-link" href="sales.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span>Sales</span></a><a class="nav-link" href="catalog.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg><span>Catalog by Model</span></a><a class="nav-link" href="reports.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7m-7 4h7"/></svg><span>Reports</span></a><a class="nav-link" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></a><a class="nav-link" href="about.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-9.5v.5"/></svg><span>About the Shop</span></a>                            <div class="nav-section">Administration</div>
+                <a class="nav-link" href="users.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7m2.5 8.5a6.5 6.5 0 0 0-3-5.5"/></svg><span>Users</span></a><a class="nav-link" href="models.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg><span>Gun Models</span></a><a class="nav-link" href="activity.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Activity Log</span></a>                    </nav>
+        <div class="sidebar-note">
+            <span class="sidebar-note-line"></span>
+            <p>ARMED WITH<br><strong>PRECISION.</strong></p>
+        </div>
+        <div class="sidebar-foot">
+                            <span class="sidebar-user">Shop Administrator</span><span>ADMINISTRATOR</span>
+                    </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+            <div class="crumb"><span class="crumb-dot"></span> <span class="crumb-store">BLACKSTRIKE</span> <span class="crumb-rule"></span> <span>SHOP</span></div>
+            <div class="topbar-right">
+                                                            <a class="topbar-action" href="sale-new.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg><span>New sale</span></a>
+                                        <span class="topbar-divider"></span>
+                    <div class="profile-menu">
+                        <button class="profile-button" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+                            <span class="avatar">S</span>
+                        </button>
+                        <div class="profile-dropdown" role="menu">
+                            <div class="profile-summary">
+                                <strong>Shop Administrator</strong>
+                                <span>@admin · Administrator</span>
+                            </div>
+                                                        <a role="menuitem" href="settings.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg> My profile</a>
+                            <a role="menuitem" href="settings--tab-shop.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9h16l-1-5H5zM4 9v11h16V9M9 20v-6h6v6"/></svg> Shop settings</a>                            <form method="post" action="index.html" data-demo-go="index.html"><input type="hidden" name="_csrf" value="d67cd97a33aa084a1cb34c277a243f83afb99e4c2359744cab21313b063c5ab5"><button type="submit" role="menuitem"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4M10 17l5-5-5-5m5 5H3"/></svg> Sign out</button></form>
+                        </div>
+                    </div>
+                            </div>
+        </header>
+
+        <div class="toast-region" aria-live="polite">
+                    </div>
+
+        <div class="page-content" id="content">
+    <svg class="gun-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="jn-g-slide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5e67"/><stop offset=".18" stop-color="#3b3e45"/><stop offset=".6" stop-color="#23252a"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="jn-g-frame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2c31"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="jn-g-grip" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26272c"/><stop offset="1" stop-color="#0c0d0f"/></linearGradient><linearGradient id="jn-g-hood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a8e98"/><stop offset="1" stop-color="#3d4047"/></linearGradient><pattern id="jn-g-tex" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#141518"/><rect width="2.4" height="2.4" fill="#25262b"/></pattern><linearGradient id="jn-g-sheen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="jn-g-clip"><path d="M24 36H298Q306 36 306 44V74H24Q14 74 14 64V46Q14 36 24 36Z"/><path d="M30 37V28H48V37Z"/><path d="M286 37V30H296V37Z"/><path d="M36 73H302V88Q302 96 294 96H178Q166 96 160 104H116L110 96H36Z"/><path d="M36 80H116L108 104Q98 140 92 178Q91 188 81 188H30Q21 188 22 178Q28 130 36 80Z"/><path d="M37 73Q26 74 21 83Q29 86 37 88Z"/><path d="M24 185H90V192Q90 197 85 197H29Q24 197 24 192Z"/></clipPath><symbol id="jn-gun-face" viewBox="0 0 320 200"><path d="M36 73H302V88Q302 96 294 96H178Q166 96 160 104H116L110 96H36Z" fill="url(#jn-g-frame)" stroke="#34363c" stroke-width=".8"/>
+<g fill="#0c0d0f"><rect x="232" y="87" width="6" height="5" rx="1"/><rect x="244" y="87" width="6" height="5" rx="1"/><rect x="256" y="87" width="6" height="5" rx="1"/><rect x="268" y="87" width="6" height="5" rx="1"/><rect x="280" y="87" width="6" height="5" rx="1"/></g>
+<path d="M36 80H116L108 104Q98 140 92 178Q91 188 81 188H30Q21 188 22 178Q28 130 36 80Z" fill="url(#jn-g-grip)" stroke="#2c2e33" stroke-width=".8"/>
+<path d="M45 94H106L100 113Q92 146 87 174H33Q38 132 45 94Z" fill="url(#jn-g-tex)"/>
+<path d="M37 73Q26 74 21 83Q29 86 37 88Z" fill="#1b1c20"/>
+<path d="M24 185H90V192Q90 197 85 197H29Q24 197 24 192Z" fill="#17181b" stroke="#33353a" stroke-width=".8"/>
+<path d="M112 100Q110 134 138 136H162Q176 136 176 122L174 100" fill="none" stroke="#1f2024" stroke-width="8"/>
+<path d="M114 102Q113 130 138 132H162Q172 132 172 122" fill="none" stroke="#3a3c43" stroke-width="1"/>
+<path d="M138 103Q134 116 142 128" fill="none" stroke="#ed1428" stroke-width="5" stroke-linecap="round"/>
+<rect x="118" y="78" width="34" height="6" rx="2" fill="#0c0d0f" stroke="#3a3c42" stroke-width=".8"/>
+<rect x="168" y="80" width="14" height="5" rx="1.5" fill="#0c0d0f"/>
+<path d="M24 36H298Q306 36 306 44V74H24Q14 74 14 64V46Q14 36 24 36Z" fill="url(#jn-g-slide)" stroke="#55585f" stroke-width="1"/>
+<path d="M26 38.6H296" stroke="#9095a0" stroke-width="1.2" opacity=".55"/>
+<path d="M18 72.5H300" stroke="#000" stroke-width="1" opacity=".5"/>
+<g stroke="#0d0e10" stroke-width="2.2" stroke-linecap="round"><line x1="32" y1="44" x2="28" y2="70"/><line x1="38" y1="44" x2="34" y2="70"/><line x1="44" y1="44" x2="40" y2="70"/><line x1="50" y1="44" x2="46" y2="70"/><line x1="56" y1="44" x2="52" y2="70"/><line x1="62" y1="44" x2="58" y2="70"/><line x1="68" y1="44" x2="64" y2="70"/><line x1="74" y1="44" x2="70" y2="70"/><line x1="80" y1="44" x2="76" y2="70"/><line x1="262" y1="46" x2="259" y2="68"/><line x1="268" y1="46" x2="265" y2="68"/><line x1="274" y1="46" x2="271" y2="68"/><line x1="280" y1="46" x2="277" y2="68"/><line x1="286" y1="46" x2="283" y2="68"/></g>
+<rect x="150" y="40" width="58" height="17" rx="2" fill="#0a0b0d" stroke="#3c3e44" stroke-width=".8"/>
+<rect x="154" y="44" width="50" height="9" rx="1.5" fill="url(#jn-g-hood)"/>
+<text x="178" y="68" fill="#80838c" font-family="Consolas, monospace" font-size="7.5" letter-spacing="1.6">BLACKSTRIKE · 9×19</text>
+<path d="M30 37V28H48V37Z" fill="#1a1b1f"/><circle cx="39" cy="31.5" r="1.7" fill="#eaeaea"/>
+<path d="M286 37V30H296V37Z" fill="#1a1b1f"/><circle cx="291" cy="33" r="1.9" fill="#ff3346"/>
+<line x1="305" y1="46" x2="305" y2="72" stroke="#0b0c0e" stroke-width="2"/>
+<rect x="0" y="0" width="320" height="200" fill="url(#jn-g-sheen)" clip-path="url(#jn-g-clip)"/></symbol></defs></svg><section class="shop-hero">
+    <div class="shop-hero-copy">
+        <div class="eyebrow">BLACKSTRIKE ONLINE SHOP</div>
+        <h1>GEAR UP. <em>REQUEST ONLINE.</em> PICK UP IN STORE.</h1>
+        <p>Browse firearms, ammunition and accessories, then send a purchase request. We verify your license and ID when you pick up.</p>
+    </div>
+    <ol class="shop-steps" aria-label="How buying works">
+        <li><span><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></span><strong>Choose</strong><small>Open any item to see large photos and details</small></li>
+        <li><span><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg></span><strong>Request</strong><small>Fill in the purchase form with your license and ID</small></li>
+        <li><span><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><strong>Verify & pay</strong><small>Bring originals on your pickup date and pay in store</small></li>
+    </ol>
+</section>
+
+<div class="shop-toolbar" data-shop-toolbar>
+    <label class="search-box"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search products</span><input type="search" placeholder="Search products, makers, calibers… (press /)" data-shop-search autocomplete="off"></label>
+    <div class="shop-cats" role="tablist" aria-label="Category">
+        <button type="button" class="chip active" data-shop-cat="" role="tab" aria-selected="true">All <span>24</span></button>
+                    <button type="button" class="chip" data-shop-cat="Firearm" role="tab" aria-selected="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h12l2 2h4v3h-5l-2-2h-4v7H7v-7H3z"/><path d="M17 9V6h4v5"/></svg>Firearms <span>8</span></button>
+                    <button type="button" class="chip" data-shop-cat="Ammunition" role="tab" aria-selected="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 21V9l3-6 3 6v12zm8 0V9l3-6 3 6v12z"/><path d="M6 13h6m2 0h6"/></svg>Ammunition <span>8</span></button>
+                    <button type="button" class="chip" data-shop-cat="Accessory" role="tab" aria-selected="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg>Accessories <span>8</span></button>
+            </div>
+    <div class="shop-filters">
+        <label class="select-wrap"><span class="sr-only">Caliber</span>
+            <select data-shop-caliber><option value="">All calibers</option><option>.22 LR</option><option>.357 Magnum</option><option>.45 ACP</option><option>12 Gauge</option><option>5.56×45mm NATO</option><option>9mm Luger</option></select>
+        </label>
+        <label class="select-wrap"><span class="sr-only">Sort</span>
+            <select data-shop-sort>
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="name">Name A–Z</option>
+            </select>
+        </label>
+        <label class="check shop-instock"><input type="checkbox" data-shop-instock> <span>In stock only</span></label>
+    </div>
+</div>
+<p class="shop-count" data-shop-count aria-live="polite">24 products</p>
+
+<div class="shop-grid" data-shop-grid>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View Glock 17 Gen5, ₱48,500.00"
+            data-shop-card data-id="1" data-cat="Firearm" data-caliber="9mm Luger"
+            data-price="48500" data-name="glock 17 gen5" data-order="0"
+            data-instock="1"
+            data-search="glock 17 gen5 fa-glk17 firearm 9mm luger glock glock 17 gen5 pistol 4.49 in barrel · 17+1">
+            <div class="shop-media">
+                                    <img src="assets/images/glock-17-gen5.png" alt="Glock 17 Gen5" loading="lazy">
+                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Glock</span>
+                <h2>Glock 17 Gen5</h2>
+                <p>9mm Luger · 4.49 in barrel · 17+1</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱48,500.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View Glock 19 Gen5, ₱47,500.00"
+            data-shop-card data-id="2" data-cat="Firearm" data-caliber="9mm Luger"
+            data-price="47500" data-name="glock 19 gen5" data-order="1"
+            data-instock="1"
+            data-search="glock 19 gen5 fa-glk19 firearm 9mm luger glock glock 19 gen5 pistol 4.02 in barrel · 15+1">
+            <div class="shop-media">
+                                    <img src="assets/images/glock-19-gen5.png" alt="Glock 19 Gen5" loading="lazy">
+                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Glock</span>
+                <h2>Glock 19 Gen5</h2>
+                <p>9mm Luger · 4.02 in barrel · 15+1</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱47,500.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View Remington 870 Express, ₱39,000.00"
+            data-shop-card data-id="8" data-cat="Firearm" data-caliber="12 Gauge"
+            data-price="39000" data-name="remington 870 express" data-order="2"
+            data-instock="1"
+            data-search="remington 870 express fa-r870 firearm 12 gauge remington 870 express shotgun 18.5 in barrel">
+            <div class="shop-media">
+                                    <img src="assets/images/remington-870-express.png" alt="Remington 870 Express" loading="lazy">
+                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Remington</span>
+                <h2>Remington 870 Express</h2>
+                <p>12 Gauge · 18.5 in barrel</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱39,000.00</strong>
+                <span class="status low">Only a few left</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View Rock Island M1911-A1 GI, ₱32,000.00"
+            data-shop-card data-id="4" data-cat="Firearm" data-caliber=".45 ACP"
+            data-price="32000" data-name="rock island m1911-a1 gi" data-order="3"
+            data-instock="1"
+            data-search="rock island m1911-a1 gi fa-ria1911 firearm .45 acp armscor rock island m1911-a1 gi pistol 5 in barrel · 8+1">
+            <div class="shop-media">
+                                    <img src="assets/images/rock-island-m1911-a1-gi.png" alt="Rock Island M1911-A1 GI" loading="lazy">
+                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Armscor</span>
+                <h2>Rock Island M1911-A1 GI</h2>
+                <p>.45 ACP · 5 in barrel · 8+1</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱32,000.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View Ruger 10/22 Carbine, ₱26,500.00"
+            data-shop-card data-id="7" data-cat="Firearm" data-caliber=".22 LR"
+            data-price="26500" data-name="ruger 10/22 carbine" data-order="4"
+            data-instock="1"
+            data-search="ruger 10/22 carbine fa-r1022 firearm .22 lr ruger 10/22 carbine rifle 18.5 in barrel">
+            <div class="shop-media">
+                                    <img src="assets/images/ruger-10-22-carbine.png" alt="Ruger 10/22 Carbine" loading="lazy">
+                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ruger</span>
+                <h2>Ruger 10/22 Carbine</h2>
+                <p>.22 LR · 18.5 in barrel</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱26,500.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View S&amp;W M&amp;P15 Sport III, ₱89,000.00"
+            data-shop-card data-id="6" data-cat="Firearm" data-caliber="5.56×45mm NATO"
+            data-price="89000" data-name="s&amp;w m&amp;p15 sport iii" data-order="5"
+            data-instock="1"
+            data-search="s&amp;w m&amp;p15 sport iii fa-mp15 firearm 5.56×45mm nato smith &amp; wesson m&amp;p15 sport iii rifle 16 in barrel">
+            <div class="shop-media">
+                                    <img src="assets/images/sw-mp15-sport-iii.png" alt="S&amp;W M&amp;P15 Sport III" loading="lazy">
+                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Smith &amp; Wesson</span>
+                <h2>S&amp;W M&amp;P15 Sport III</h2>
+                <p>5.56×45mm NATO · 16 in barrel</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱89,000.00</strong>
+                <span class="status low">Only a few left</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View S&amp;W Model 686 4&quot;, ₱68,000.00"
+            data-shop-card data-id="5" data-cat="Firearm" data-caliber=".357 Magnum"
+            data-price="68000" data-name="s&amp;w model 686 4&quot;" data-order="6"
+            data-instock="1"
+            data-search="s&amp;w model 686 4&quot; fa-s&amp;w686 firearm .357 magnum smith &amp; wesson model 686 revolver 4 in barrel · 6 rounds">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><use href="#jn-gun-face"/></svg>                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Smith &amp; Wesson</span>
+                <h2>S&amp;W Model 686 4&quot;</h2>
+                <p>.357 Magnum · 4 in barrel · 6 rounds</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱68,000.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-firearm " tabindex="0" role="button"
+            aria-label="View SIG Sauer P320 Carry, ₱52,000.00"
+            data-shop-card data-id="3" data-cat="Firearm" data-caliber="9mm Luger"
+            data-price="52000" data-name="sig sauer p320 carry" data-order="7"
+            data-instock="1"
+            data-search="sig sauer p320 carry fa-p320c firearm 9mm luger sig sauer p320 carry pistol 3.9 in barrel · 15+1">
+            <div class="shop-media">
+                                    <img src="assets/images/sig-sauer-p320-carry.png" alt="SIG Sauer P320 Carry" loading="lazy">
+                                <span class="shop-cat-badge">Firearm</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">SIG Sauer</span>
+                <h2>SIG Sauer P320 Carry</h2>
+                <p>9mm Luger · 3.9 in barrel · 15+1</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱52,000.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View .22 LR 40gr LRN, ₱650.00"
+            data-shop-card data-id="14" data-cat="Ammunition" data-caliber=".22 LR"
+            data-price="650" data-name=".22 lr 40gr lrn" data-order="8"
+            data-instock="1"
+            data-search=".22 lr 40gr lrn am-22lr40 ammunition .22 lr 100 rounds / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">.22 LR</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>.22 LR 40gr LRN</h2>
+                <p>.22 LR · 100 rounds / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱650.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View .357 Magnum JSP 158gr, ₱2,800.00"
+            data-shop-card data-id="12" data-cat="Ammunition" data-caliber=".357 Magnum"
+            data-price="2800" data-name=".357 magnum jsp 158gr" data-order="9"
+            data-instock="1"
+            data-search=".357 magnum jsp 158gr am-357jsp ammunition .357 magnum 50 rounds / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">.357 MAGNUM</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>.357 Magnum JSP 158gr</h2>
+                <p>.357 Magnum · 50 rounds / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱2,800.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View .45 ACP FMJ 230gr, ₱2,250.00"
+            data-shop-card data-id="11" data-cat="Ammunition" data-caliber=".45 ACP"
+            data-price="2250" data-name=".45 acp fmj 230gr" data-order="10"
+            data-instock="1"
+            data-search=".45 acp fmj 230gr am-45fmj230 ammunition .45 acp 50 rounds / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">.45 ACP</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>.45 ACP FMJ 230gr</h2>
+                <p>.45 ACP · 50 rounds / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱2,250.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View 12 Gauge #8 Birdshot, ₱1,150.00"
+            data-shop-card data-id="16" data-cat="Ammunition" data-caliber="12 Gauge"
+            data-price="1150" data-name="12 gauge #8 birdshot" data-order="11"
+            data-instock="1"
+            data-search="12 gauge #8 birdshot am-12g8bird ammunition 12 gauge 25 shells / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">12 GAUGE</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>12 Gauge #8 Birdshot</h2>
+                <p>12 Gauge · 25 shells / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,150.00</strong>
+                <span class="status low">Only a few left</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View 12 Gauge 00 Buck, ₱480.00"
+            data-shop-card data-id="15" data-cat="Ammunition" data-caliber="12 Gauge"
+            data-price="480" data-name="12 gauge 00 buck" data-order="12"
+            data-instock="1"
+            data-search="12 gauge 00 buck am-12g00b ammunition 12 gauge 5 shells / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">12 GAUGE</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>12 Gauge 00 Buck</h2>
+                <p>12 Gauge · 5 shells / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱480.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View 5.56 NATO FMJ 55gr, ₱1,100.00"
+            data-shop-card data-id="13" data-cat="Ammunition" data-caliber="5.56×45mm NATO"
+            data-price="1100" data-name="5.56 nato fmj 55gr" data-order="13"
+            data-instock="1"
+            data-search="5.56 nato fmj 55gr am-556fmj55 ammunition 5.56×45mm nato 20 rounds / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">5.56×45MM NATO</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>5.56 NATO FMJ 55gr</h2>
+                <p>5.56×45mm NATO · 20 rounds / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,100.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View 9mm FMJ 115gr, ₱1,350.00"
+            data-shop-card data-id="9" data-cat="Ammunition" data-caliber="9mm Luger"
+            data-price="1350" data-name="9mm fmj 115gr" data-order="14"
+            data-instock="1"
+            data-search="9mm fmj 115gr am-9fmj115 ammunition 9mm luger 50 rounds / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">9MM LUGER</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>9mm FMJ 115gr</h2>
+                <p>9mm Luger · 50 rounds / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,350.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-ammunition " tabindex="0" role="button"
+            aria-label="View 9mm JHP 124gr, ₱1,450.00"
+            data-shop-card data-id="10" data-cat="Ammunition" data-caliber="9mm Luger"
+            data-price="1450" data-name="9mm jhp 124gr" data-order="15"
+            data-instock="1"
+            data-search="9mm jhp 124gr am-9jhp124 ammunition 9mm luger 20 rounds / box">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">9MM LUGER</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg>                                <span class="shop-cat-badge">Ammunition</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Ammunition</span>
+                <h2>9mm JHP 124gr</h2>
+                <p>9mm Luger · 20 rounds / box</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,450.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View 1911 Magazine, ₱1,500.00"
+            data-shop-card data-id="19" data-cat="Accessory" data-caliber=".45 ACP"
+            data-price="1500" data-name="1911 magazine" data-order="16"
+            data-instock="1"
+            data-search="1911 magazine ac-1911mag accessory .45 acp armscor rock island m1911-a1 gi pistol 8 rounds · steel">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Armscor</span>
+                <h2>1911 Magazine</h2>
+                <p>.45 ACP · 8 rounds · steel</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,500.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View AR-15 Magazine, ₱1,600.00"
+            data-shop-card data-id="18" data-cat="Accessory" data-caliber="5.56×45mm NATO"
+            data-price="1600" data-name="ar-15 magazine" data-order="17"
+            data-instock="1"
+            data-search="ar-15 magazine ac-ar15mag accessory 5.56×45mm nato smith &amp; wesson m&amp;p15 sport iii rifle 30 rounds · polymer">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Smith &amp; Wesson</span>
+                <h2>AR-15 Magazine</h2>
+                <p>5.56×45mm NATO · 30 rounds · polymer</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,600.00</strong>
+                <span class="status low">Only a few left</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View Biometric Pistol Safe, ₱8,900.00"
+            data-shop-card data-id="24" data-cat="Accessory" data-caliber=""
+            data-price="8900" data-name="biometric pistol safe" data-order="18"
+            data-instock="1"
+            data-search="biometric pistol safe ac-safe accessory fingerprint + key backup">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Accessory</span>
+                <h2>Biometric Pistol Safe</h2>
+                <p>Fingerprint + key backup</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱8,900.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View Cleaning Kit — 9mm/.38/.357, ₱1,250.00"
+            data-shop-card data-id="23" data-cat="Accessory" data-caliber="9mm Luger"
+            data-price="1250" data-name="cleaning kit — 9mm/.38/.357" data-order="19"
+            data-instock="1"
+            data-search="cleaning kit — 9mm/.38/.357 ac-clean9 accessory 9mm luger rod, brushes, patches">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Accessory</span>
+                <h2>Cleaning Kit — 9mm/.38/.357</h2>
+                <p>9mm Luger · Rod, brushes, patches</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,250.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View Eye &amp; Ear Protection Kit, ₱1,850.00"
+            data-shop-card data-id="22" data-cat="Accessory" data-caliber=""
+            data-price="1850" data-name="eye &amp; ear protection kit" data-order="20"
+            data-instock="1"
+            data-search="eye &amp; ear protection kit ac-eyeear accessory clear glasses · 31 db muffs">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Accessory</span>
+                <h2>Eye &amp; Ear Protection Kit</h2>
+                <p>Clear glasses · 31 dB muffs</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱1,850.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View Glock 17 Magazine, ₱2,200.00"
+            data-shop-card data-id="17" data-cat="Accessory" data-caliber="9mm Luger"
+            data-price="2200" data-name="glock 17 magazine" data-order="21"
+            data-instock="1"
+            data-search="glock 17 magazine ac-glk17mag accessory 9mm luger glock glock 17 gen5 pistol 17 rounds · factory">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Glock</span>
+                <h2>Glock 17 Magazine</h2>
+                <p>9mm Luger · 17 rounds · factory</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱2,200.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View Kydex IWB Holster — G19, ₱2,400.00"
+            data-shop-card data-id="20" data-cat="Accessory" data-caliber=""
+            data-price="2400" data-name="kydex iwb holster — g19" data-order="22"
+            data-instock="1"
+            data-search="kydex iwb holster — g19 ac-g19hol accessory glock glock 19 gen5 pistol black · ambidextrous clip">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Glock</span>
+                <h2>Kydex IWB Holster — G19</h2>
+                <p>Black · ambidextrous clip</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱2,400.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+            <article class="shop-card shop-accessory " tabindex="0" role="button"
+            aria-label="View Range Bag — Standard, ₱2,950.00"
+            data-shop-card data-id="21" data-cat="Accessory" data-caliber=""
+            data-price="2950" data-name="range bag — standard" data-order="23"
+            data-instock="1"
+            data-search="range bag — standard ac-rangebag accessory black · padded interior">
+            <div class="shop-media">
+                                    <svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg>                                <span class="shop-cat-badge">Accessory</span>
+                                <span class="shop-zoom-hint"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> View details</span>
+            </div>
+            <div class="shop-body">
+                <span class="shop-maker">Accessory</span>
+                <h2>Range Bag — Standard</h2>
+                <p>Black · padded interior</p>
+            </div>
+            <footer class="shop-foot">
+                <strong>₱2,950.00</strong>
+                <span class="status ok">In stock</span>
+            </footer>
+        </article>
+    </div>
+<section class="panel" data-shop-empty hidden><div class="empty-state"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><strong>No products match</strong><p>Try another search, category or caliber.</p></div></section>
+
+<!-- Product detail: large photos, specs and purchase form -->
+<div class="modal pd-modal" id="product-modal" data-pd-modal   hidden>
+    <div class="pd-card" role="dialog" aria-modal="true" aria-labelledby="pd-title">
+        <button type="button" class="pd-close" data-pd-close aria-label="Close"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        <div class="pd-gallery">
+            <button type="button" class="pd-main" data-pd-main aria-label="Open photo full screen">
+                <img data-pd-img alt="">
+                <span class="pd-ph" data-pd-ph></span>
+                <span class="pd-expand"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg> Click to enlarge</span>
+            </button>
+            <button type="button" class="pd-nav pd-prev" data-pd-prev aria-label="Previous photo"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6 6-6-6 6-6"/></svg></button>
+            <button type="button" class="pd-nav pd-next" data-pd-next aria-label="Next photo"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            <div class="pd-thumbs" data-pd-thumbs></div>
+        </div>
+        <div class="pd-info">
+            <span class="shop-maker" data-pd-maker></span>
+            <h2 id="pd-title" data-pd-name></h2>
+            <div class="pd-meta"><span class="caliber-tag" data-pd-cat></span><span class="caliber-tag" data-pd-caliber><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><span></span></span><span class="status" data-pd-avail></span></div>
+            <div class="pd-price"><strong data-pd-price></strong><small>Pay in store at pickup</small></div>
+            <nav class="pd-tabs" role="tablist">
+                <button type="button" class="active" role="tab" data-pd-tab="details" aria-selected="true"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-9.5v.5"/></svg> Details</button>
+                <button type="button" role="tab" data-pd-tab="buy" aria-selected="false"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Purchase form</button>
+            </nav>
+
+            <section class="pd-panel" data-pd-panel="details">
+                <p class="pd-desc" data-pd-desc></p>
+                <dl class="pd-specs" data-pd-specs></dl>
+                <div class="pd-related" data-pd-related-wrap><h3 data-pd-related-label></h3><div data-pd-related></div></div>
+                <div class="pd-actions">
+                    <button type="button" class="btn btn-primary" data-pd-go-buy><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg> Fill in purchase form</button>
+                                    </div>
+            </section>
+
+            <section class="pd-panel" data-pd-panel="buy" hidden>
+                                    <div class="pd-gate"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><p>You’re signed in as shop staff. Record walk-in sales in the POS.</p><a class="btn btn-primary" data-pd-pos href="sale-new.html"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 9H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg> Open in POS</a></div>
+                            </section>
+        </div>
+    </div>
+</div>
+
+<!-- Full-screen photo viewer -->
+<div class="lightbox" data-lightbox hidden>
+    <button type="button" class="pd-close" data-lb-close aria-label="Close full-screen photo"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="lb-stage" data-lb-stage><img data-lb-img alt=""></div>
+    <button type="button" class="pd-nav pd-prev" data-lb-prev aria-label="Previous photo"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5m6 6-6-6 6-6"/></svg></button>
+    <button type="button" class="pd-nav pd-next" data-lb-next aria-label="Next photo"><svg class="icon " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+    <div class="lb-bar"><span data-lb-caption></span><span class="lb-hint">Click photo to zoom · drag to pan · Esc to close</span></div>
+</div>
+
+<script type="application/json" id="shop-data">[{"id":1,"name":"Glock 17 Gen5","sku":"FA-GLK17","category":"Firearm","maker":"Glock","model":"Glock 17 Gen5","platform":"Pistol","caliber":"9mm Luger","detail":"4.49 in barrel · 17+1","description":"Full-size striker-fired service pistol with a 17-round magazine.","price":48500,"priceText":"₱48,500.00","available":true,"maxQty":1,"availability":"In stock","availabilityClass":"ok","images":["assets\/images\/glock-17-gen5.png"],"related":[{"id":9,"name":"9mm FMJ 115gr","price":"₱1,350.00"},{"id":10,"name":"9mm JHP 124gr","price":"₱1,450.00"}],"relatedLabel":"Compatible ammunition"},{"id":2,"name":"Glock 19 Gen5","sku":"FA-GLK19","category":"Firearm","maker":"Glock","model":"Glock 19 Gen5","platform":"Pistol","caliber":"9mm Luger","detail":"4.02 in barrel · 15+1","description":"Compact version of the G17 — the most popular carry pistol in its class.","price":47500,"priceText":"₱47,500.00","available":true,"maxQty":1,"availability":"In stock","availabilityClass":"ok","images":["assets\/images\/glock-19-gen5.png"],"related":[{"id":9,"name":"9mm FMJ 115gr","price":"₱1,350.00"},{"id":10,"name":"9mm JHP 124gr","price":"₱1,450.00"}],"relatedLabel":"Compatible ammunition"},{"id":8,"name":"Remington 870 Express","sku":"FA-R870","category":"Firearm","maker":"Remington","model":"870 Express","platform":"Shotgun","caliber":"12 Gauge","detail":"18.5 in barrel","description":"Pump-action shotgun for sport and home defense.","price":39000,"priceText":"₱39,000.00","available":true,"maxQty":1,"availability":"Only a few left","availabilityClass":"low","images":["assets\/images\/remington-870-express.png"],"related":[{"id":16,"name":"12 Gauge #8 Birdshot","price":"₱1,150.00"},{"id":15,"name":"12 Gauge 00 Buck","price":"₱480.00"}],"relatedLabel":"Compatible ammunition"},{"id":4,"name":"Rock Island M1911-A1 GI","sku":"FA-RIA1911","category":"Firearm","maker":"Armscor","model":"Rock Island M1911-A1 GI","platform":"Pistol","caliber":".45 ACP","detail":"5 in barrel · 8+1","description":"Philippine-made classic single-action 1911 with a 5-inch barrel.","price":32000,"priceText":"₱32,000.00","available":true,"maxQty":1,"availability":"In stock","availabilityClass":"ok","images":["assets\/images\/rock-island-m1911-a1-gi.png"],"related":[{"id":11,"name":".45 ACP FMJ 230gr","price":"₱2,250.00"}],"relatedLabel":"Compatible ammunition"},{"id":7,"name":"Ruger 10\/22 Carbine","sku":"FA-R1022","category":"Firearm","maker":"Ruger","model":"10\/22 Carbine","platform":"Rifle","caliber":".22 LR","detail":"18.5 in barrel","description":"Rimfire semi-automatic rifle, ideal for training and plinking.","price":26500,"priceText":"₱26,500.00","available":true,"maxQty":1,"availability":"In stock","availabilityClass":"ok","images":["assets\/images\/ruger-10-22-carbine.png"],"related":[{"id":14,"name":".22 LR 40gr LRN","price":"₱650.00"}],"relatedLabel":"Compatible ammunition"},{"id":6,"name":"S\u0026W M\u0026P15 Sport III","sku":"FA-MP15","category":"Firearm","maker":"Smith \u0026 Wesson","model":"M\u0026P15 Sport III","platform":"Rifle","caliber":"5.56×45mm NATO","detail":"16 in barrel","description":"AR-15 pattern semi-automatic rifle.","price":89000,"priceText":"₱89,000.00","available":true,"maxQty":1,"availability":"Only a few left","availabilityClass":"low","images":["assets\/images\/sw-mp15-sport-iii.png"],"related":[{"id":13,"name":"5.56 NATO FMJ 55gr","price":"₱1,100.00"}],"relatedLabel":"Compatible ammunition"},{"id":5,"name":"S\u0026W Model 686 4\"","sku":"FA-S\u0026W686","category":"Firearm","maker":"Smith \u0026 Wesson","model":"Model 686","platform":"Revolver","caliber":".357 Magnum","detail":"4 in barrel · 6 rounds","description":"Stainless double-action revolver; also chambers .38 Special.","price":68000,"priceText":"₱68,000.00","available":true,"maxQty":1,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":12,"name":".357 Magnum JSP 158gr","price":"₱2,800.00"}],"relatedLabel":"Compatible ammunition"},{"id":3,"name":"SIG Sauer P320 Carry","sku":"FA-P320C","category":"Firearm","maker":"SIG Sauer","model":"P320 Carry","platform":"Pistol","caliber":"9mm Luger","detail":"3.9 in barrel · 15+1","description":"Modular striker-fired pistol with a serialized fire-control unit.","price":52000,"priceText":"₱52,000.00","available":true,"maxQty":1,"availability":"In stock","availabilityClass":"ok","images":["assets\/images\/sig-sauer-p320-carry.png"],"related":[{"id":9,"name":"9mm FMJ 115gr","price":"₱1,350.00"},{"id":10,"name":"9mm JHP 124gr","price":"₱1,450.00"}],"relatedLabel":"Compatible ammunition"},{"id":14,"name":".22 LR 40gr LRN","sku":"AM-22LR40","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":".22 LR","detail":"100 rounds \/ box","description":"","price":650,"priceText":"₱650.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":7,"name":"Ruger 10\/22 Carbine","price":"₱26,500.00"}],"relatedLabel":"Fits these firearms"},{"id":12,"name":".357 Magnum JSP 158gr","sku":"AM-357JSP","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":".357 Magnum","detail":"50 rounds \/ box","description":"","price":2800,"priceText":"₱2,800.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":5,"name":"S\u0026W Model 686 4\"","price":"₱68,000.00"}],"relatedLabel":"Fits these firearms"},{"id":11,"name":".45 ACP FMJ 230gr","sku":"AM-45FMJ230","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":".45 ACP","detail":"50 rounds \/ box","description":"","price":2250,"priceText":"₱2,250.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":4,"name":"Rock Island M1911-A1 GI","price":"₱32,000.00"}],"relatedLabel":"Fits these firearms"},{"id":16,"name":"12 Gauge #8 Birdshot","sku":"AM-12G8BIRD","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":"12 Gauge","detail":"25 shells \/ box","description":"","price":1150,"priceText":"₱1,150.00","available":true,"maxQty":8,"availability":"Only a few left","availabilityClass":"low","images":[],"related":[{"id":8,"name":"Remington 870 Express","price":"₱39,000.00"}],"relatedLabel":"Fits these firearms"},{"id":15,"name":"12 Gauge 00 Buck","sku":"AM-12G00B","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":"12 Gauge","detail":"5 shells \/ box","description":"","price":480,"priceText":"₱480.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":8,"name":"Remington 870 Express","price":"₱39,000.00"}],"relatedLabel":"Fits these firearms"},{"id":13,"name":"5.56 NATO FMJ 55gr","sku":"AM-556FMJ55","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":"5.56×45mm NATO","detail":"20 rounds \/ box","description":"","price":1100,"priceText":"₱1,100.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":6,"name":"S\u0026W M\u0026P15 Sport III","price":"₱89,000.00"}],"relatedLabel":"Fits these firearms"},{"id":9,"name":"9mm FMJ 115gr","sku":"AM-9FMJ115","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":"9mm Luger","detail":"50 rounds \/ box","description":"","price":1350,"priceText":"₱1,350.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":1,"name":"Glock 17 Gen5","price":"₱48,500.00"},{"id":2,"name":"Glock 19 Gen5","price":"₱47,500.00"},{"id":3,"name":"SIG Sauer P320 Carry","price":"₱52,000.00"}],"relatedLabel":"Fits these firearms"},{"id":10,"name":"9mm JHP 124gr","sku":"AM-9JHP124","category":"Ammunition","maker":"Ammunition","model":null,"platform":null,"caliber":"9mm Luger","detail":"20 rounds \/ box","description":"","price":1450,"priceText":"₱1,450.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":1,"name":"Glock 17 Gen5","price":"₱48,500.00"},{"id":2,"name":"Glock 19 Gen5","price":"₱47,500.00"},{"id":3,"name":"SIG Sauer P320 Carry","price":"₱52,000.00"}],"relatedLabel":"Fits these firearms"},{"id":19,"name":"1911 Magazine","sku":"AC-1911MAG","category":"Accessory","maker":"Armscor","model":"Rock Island M1911-A1 GI","platform":"Pistol","caliber":".45 ACP","detail":"8 rounds · steel","description":"Philippine-made classic single-action 1911 with a 5-inch barrel.","price":1500,"priceText":"₱1,500.00","available":true,"maxQty":16,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":4,"name":"Rock Island M1911-A1 GI","price":"₱32,000.00"}],"relatedLabel":"Made for"},{"id":18,"name":"AR-15 Magazine","sku":"AC-AR15MAG","category":"Accessory","maker":"Smith \u0026 Wesson","model":"M\u0026P15 Sport III","platform":"Rifle","caliber":"5.56×45mm NATO","detail":"30 rounds · polymer","description":"AR-15 pattern semi-automatic rifle.","price":1600,"priceText":"₱1,600.00","available":true,"maxQty":7,"availability":"Only a few left","availabilityClass":"low","images":[],"related":[{"id":6,"name":"S\u0026W M\u0026P15 Sport III","price":"₱89,000.00"}],"relatedLabel":"Made for"},{"id":24,"name":"Biometric Pistol Safe","sku":"AC-SAFE","category":"Accessory","maker":"Accessory","model":null,"platform":null,"caliber":null,"detail":"Fingerprint + key backup","description":"","price":8900,"priceText":"₱8,900.00","available":true,"maxQty":6,"availability":"In stock","availabilityClass":"ok","images":[],"related":[],"relatedLabel":"Made for"},{"id":23,"name":"Cleaning Kit — 9mm\/.38\/.357","sku":"AC-CLEAN9","category":"Accessory","maker":"Accessory","model":null,"platform":null,"caliber":"9mm Luger","detail":"Rod, brushes, patches","description":"","price":1250,"priceText":"₱1,250.00","available":true,"maxQty":11,"availability":"In stock","availabilityClass":"ok","images":[],"related":[],"relatedLabel":"Made for"},{"id":22,"name":"Eye \u0026 Ear Protection Kit","sku":"AC-EYEEAR","category":"Accessory","maker":"Accessory","model":null,"platform":null,"caliber":null,"detail":"Clear glasses · 31 dB muffs","description":"","price":1850,"priceText":"₱1,850.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[],"relatedLabel":"Made for"},{"id":17,"name":"Glock 17 Magazine","sku":"AC-GLK17MAG","category":"Accessory","maker":"Glock","model":"Glock 17 Gen5","platform":"Pistol","caliber":"9mm Luger","detail":"17 rounds · factory","description":"Full-size striker-fired service pistol with a 17-round magazine.","price":2200,"priceText":"₱2,200.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":1,"name":"Glock 17 Gen5","price":"₱48,500.00"}],"relatedLabel":"Made for"},{"id":20,"name":"Kydex IWB Holster — G19","sku":"AC-G19HOL","category":"Accessory","maker":"Glock","model":"Glock 19 Gen5","platform":"Pistol","caliber":null,"detail":"Black · ambidextrous clip","description":"Compact version of the G17 — the most popular carry pistol in its class.","price":2400,"priceText":"₱2,400.00","available":true,"maxQty":11,"availability":"In stock","availabilityClass":"ok","images":[],"related":[{"id":2,"name":"Glock 19 Gen5","price":"₱47,500.00"}],"relatedLabel":"Made for"},{"id":21,"name":"Range Bag — Standard","sku":"AC-RANGEBAG","category":"Accessory","maker":"Accessory","model":null,"platform":null,"caliber":null,"detail":"Black · padded interior","description":"","price":2950,"priceText":"₱2,950.00","available":true,"maxQty":20,"availability":"In stock","availabilityClass":"ok","images":[],"related":[],"relatedLabel":"Made for"}]</script>
+<template id="shop-placeholders">
+    <div data-ph="Firearm"><svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><use href="#jn-gun-face"/></svg></div><div data-ph="Ammunition"><svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b30"/><stop offset="1" stop-color="#121316"/></linearGradient><linearGradient id="ph-brass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6a2c"/><stop offset=".5" stop-color="#e9c46a"/><stop offset="1" stop-color="#8a6a2c"/></linearGradient><linearGradient id="ph-lead" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b5e66"/><stop offset=".5" stop-color="#b9bcc4"/><stop offset="1" stop-color="#5b5e66"/></linearGradient></defs><ellipse cx="160" cy="178" rx="120" ry="10" fill="#000" opacity=".5"/><path d="M70 92 L210 92 L250 70 L110 70 Z" fill="#33353b"/><path d="M70 92H210V176H70Z" fill="url(#ph-box)" stroke="#3c3e45"/><path d="M210 92 250 70V154L210 176Z" fill="#1a1b1f" stroke="#3c3e45"/><rect x="70" y="112" width="140" height="22" fill="#ed1428"/><text x="140" y="128" text-anchor="middle" fill="#fff" font-family="Arial Narrow, Impact, sans-serif" font-weight="700" font-size="13" letter-spacing="1">AMMUNITION</text><g><rect x="112" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M112 40 Q119 14 126 40Z" fill="url(#ph-lead)"/><rect x="132" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M132 40 Q139 14 146 40Z" fill="url(#ph-lead)"/><rect x="152" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M152 40 Q159 14 166 40Z" fill="url(#ph-lead)"/><rect x="172" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M172 40 Q179 14 186 40Z" fill="url(#ph-lead)"/><rect x="192" y="38" width="14" height="40" rx="2" fill="url(#ph-brass)"/><path d="M192 40 Q199 14 206 40Z" fill="url(#ph-lead)"/></g></svg></div><div data-ph="Accessory"><svg class="ph-art" viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="ph-acc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2e34"/><stop offset="1" stop-color="#111215"/></linearGradient></defs><ellipse cx="160" cy="176" rx="110" ry="10" fill="#000" opacity=".5"/><rect x="78" y="62" width="164" height="108" rx="14" fill="url(#ph-acc)" stroke="#43454c"/><path d="M122 62V46a8 8 0 0 1 8-8h60a8 8 0 0 1 8 8v16" fill="none" stroke="#43454c" stroke-width="8"/><rect x="78" y="100" width="164" height="10" fill="#8a93ff" opacity=".85"/><circle cx="160" cy="138" r="14" fill="none" stroke="#5a5d66" stroke-width="3"/><circle cx="160" cy="138" r="3" fill="#ed1428"/></svg></div></template>
+
+        </div>
+        <footer class="app-footer">
+            <span>© 2026 BlackStrike</span>
+            <span>Dealer License No. DL-0000-0000</span>
+        </footer>
+    </main>
+</div>
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+<div class="modal" id="confirm-modal" hidden>
+    <div class="modal-card" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+        <h2 id="confirm-title">Are you sure?</h2>
+        <p id="confirm-text"></p>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" data-modal-cancel>Cancel</button>
+            <button type="button" class="btn btn-danger" data-modal-confirm>Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="demo-ribbon" role="status"><b>DEMO</b><span>HTML version with sample data. Changes are not saved.</span>
+  <button type="button" aria-label="Hide" onclick="this.parentNode.remove()">×</button></div>
+<script>
+(function () {
+  var t;
+  function toast(msg) {
+    var el = document.querySelector('.demo-toast');
+    if (!el) { el = document.createElement('div'); el.className = 'demo-toast'; el.setAttribute('role', 'alert'); document.body.appendChild(el); }
+    el.textContent = msg; el.classList.add('show'); clearTimeout(t); t = setTimeout(function () { el.classList.remove('show'); }, 3200);
+  }
+  // Forms: the demo has no server, so nothing can be saved.
+  document.addEventListener('submit', function (e) {
+    var f = e.target, go = f.getAttribute('data-demo-go'), b = e.submitter;
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (go) { location.href = go; return; }
+    if (b && /export\.php/.test(b.getAttribute('formaction') || '')) { toast('CSV download works in the full app (it is generated by PHP).'); return; }
+    toast(f.getAttribute('data-demo-msg') || 'Demo mode: saving is turned off. Saving needs the PHP version (XAMPP).');
+  }, true);
+  // Links to pages that aren't in the demo.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#demo"]');
+    if (!a) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    toast(a.getAttribute('data-demo-msg') || 'This page isn’t included in the demo. It works in the full app.');
+  }, true);
+})();
+</script>
+</body>
+</html>
+    
